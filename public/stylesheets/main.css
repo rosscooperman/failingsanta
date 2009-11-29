@@ -1,13 +1,32 @@
 html {
   width: 100%;
   height: 100%;
-  background-color: #91b0f9;
+  background-color: #bfd6da;
   font-family: Helvetica,'Trebuchet MS',sans-serif;
 }
 
 body {
   width: 900px;
   margin: 25px auto;
+}
+
+a {
+  color: #ee2c9f;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  background-color: #ee2c9f;
+}
+
+#header .right {
+  float: right;
+  margin: 10px 0;
+}
+
+#content {
+  clear: both;
   padding: 15px;
   background-color: white;
   border: 1px solid black;

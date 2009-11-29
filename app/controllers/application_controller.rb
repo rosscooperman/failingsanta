@@ -26,19 +26,6 @@ class ApplicationController < ActionController::Base
     @current_user = current_user_session && current_user_session.user
   end
 
-  # method for before filters requiring that no user be logged in
-  def require_no_user
-    if current_user
-      flash[:notice] = "You must be logged out to access this page"
-      begin
-        redirect_to :back
-      rescue
-        redirect_to :root
-      end
-      return false
-    end
-  end
-
   def require_user
     unless current_user
       store_location
@@ -49,7 +36,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    unless current_user && current_user.admin?
+    return false unless require_user
+    unless current_user.admin?
       store_location
       flash[:error] = "You must be logged in as an administrator to access this page"
       redirect_to :back
