@@ -1,0 +1,9 @@
+<h1>Users</h1>
+
+<ul id="users">
+<% @users.each do |user| %>
+  <li>
+    <%=h user.name %> (<%=h user.login %>)
+  </li>
+<% end %>
+</ul>

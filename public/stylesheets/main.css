@@ -1,0 +1,32 @@
+html {
+  width: 100%;
+  height: 100%;
+  background-color: #91b0f9;
+  font-family: Helvetica,'Trebuchet MS',sans-serif;
+}
+
+body {
+  width: 900px;
+  margin: 25px auto;
+  padding: 15px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+#notice, #error {
+  margin-bottom: 15px;
+  padding: 10px;
+  text-align: center;
+}
+
+#notice {
+  color: #161;
+  background-color: #cfc;
+  border: 1px solid #161;
+}
+
+#error {
+  color: #b11;
+  background-color: #fcc;
+  border: 1px solid #b11;
+}
