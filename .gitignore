@@ -1,0 +1,9 @@
+# rails "stuff"
+config/database.yml
+db/schema.rb
+db/*.sqlite3
+tmp/*
+log/*
+
+# IDE "stuff"
+*.tmproj
