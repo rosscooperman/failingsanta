@@ -5,7 +5,8 @@ class AddDefaultAdminUser < ActiveRecord::Migration
       :email => 'nobody@nowhere.com',
       :login => 'admin',
       :password => 'flB8xtvAHpB5Qm12QQTMHx',
-      :password_confirmation => 'flB8xtvAHpB5Qm12QQTMHx'
+      :password_confirmation => 'flB8xtvAHpB5Qm12QQTMHx',
+      :admin => true
     )
   end
 
