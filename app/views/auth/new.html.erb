@@ -1,19 +1,14 @@
-<% content_for :head do %>
-  <!-- <%= stylesheet_link_tag 'noerrors' %> -->
-<% end %>
-
-<% form_for :session, @session, :url => { :action => 'create' } do |f| %>
-  <ul>
-    <li>
-      <%= f.label :login, 'Username' %>
-      <%= f.text_field :login %>
-    </li>
-    <li>
-      <%= f.label :password, 'Password' %>
-      <%= f.password_field :password %>
-    </li>
-    <li>
-      <%= f.submit 'Login' %>
-    </li>
-  </ul>
+<% form_for :session, @session, :url => { :action => 'create' },
+            :html => { :class => 'small' } do |f| %>
+  <p>
+    <%= f.label :login, 'Username' %>
+    <%= f.text_field :login, :size => 15 %>
+  </p>
+  <p>
+    <%= f.label :password, 'Password' %>
+    <%= f.password_field :password, :size => 15 %>
+  </p>
+  <p>
+    <%= f.submit 'Login' %>
+  </p>
 <% end %>

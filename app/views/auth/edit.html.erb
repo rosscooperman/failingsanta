@@ -1,0 +1,15 @@
+<% form_for @user, :url => { :action => 'update' }, :html => { :class => 'medium' } do |f| %>
+  <%= hidden_field_tag :token, params[:token] %>
+  <h1>Choose a new password:</h1>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password, :size => 15 %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :size => 15 %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>

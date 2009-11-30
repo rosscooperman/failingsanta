@@ -1,0 +1,9 @@
+<%=h @user.name%>,<br />
+<br />
+A new account has been created for you.  Visit
+<%= link_to edit_auth_url(:token => @user.perishable_token),
+            edit_auth_url(:token => @user.perishable_token) %>
+to create your password and begin using the site.<br />
+<br />
+Ho! Ho! Ho?,<br />
+Failing Santa

@@ -1,0 +1,32 @@
+<%= error_messages_for :user %>
+
+<%
+  if controller.action_name == 'new' || controller.action_name == 'create'
+    type = 'Create'
+  else
+    type = 'Update'
+  end
+%>
+
+<% form_for @user, :html => { :class => 'medium' } do |f| %>
+  <h1><%= type %> User</h1>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, :size => 30 %>
+  </p>
+  <p>
+    <%= f.label :login %>
+    <%= f.text_field :login, :size => 15 %>
+  </p>
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email, :size => 40 %>
+  </p>
+  <p>
+    <%= f.label :admin, 'Admin?' %>
+    <%= f.check_box :admin %>
+  </p>
+  <p>
+    <%= f.submit "#{type} User" %>
+  </p>
+<% end %>

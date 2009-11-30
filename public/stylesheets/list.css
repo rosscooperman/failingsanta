@@ -1,0 +1,28 @@
+ul.list {
+  list-style: none;
+  margin: 0 0 25px 0;
+  padding: 0;
+  background-color: #f3dae9;
+  border-top: 1px solid #ee2c9f;
+}
+
+ul.list li {
+  padding: 15px;
+  border-bottom: 1px solid #ee2c9f;
+}
+
+ul.list li .links {
+  float: right;
+  margin-top: 7px;
+}
+
+ul.list li .title {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+ul.list li .subtitle {
+  font-size: 0.85em;
+  font-style: italic;
+  color: #666;
+}

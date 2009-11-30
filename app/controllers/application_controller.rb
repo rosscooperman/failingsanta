@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
       return false
     end
+    true
   end
 
   def require_admin
@@ -43,6 +44,7 @@ class ApplicationController < ActionController::Base
       redirect_to :back
       return false
     end
+    true
   end
 
   def store_location(type = :current)

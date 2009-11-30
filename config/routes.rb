@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   # resource routing
   map.resources :users
-  map.resource  :auth, :controller => :auth, :only => [:new, :create, :destroy]
+  map.resource  :auth, :controller => :auth, :only => [:new, :create, :edit, :update, :destroy]
 
   # root, named, etc. routes
   map.login 'login', :controller => :auth, :action => 'new'

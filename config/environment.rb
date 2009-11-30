@@ -10,4 +10,5 @@ Rails::Initializer.run do |config|
 
   # Other settings
   config.time_zone = 'Eastern Time (US & Canada)'
+  config.action_mailer.default_content_type = 'text/html'
 end

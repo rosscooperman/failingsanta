@@ -3,6 +3,8 @@ html {
   height: 100%;
   background-color: #bfd6da;
   font-family: Helvetica,'Trebuchet MS',sans-serif;
+  font-size: 14px;
+  color: #444;
 }
 
 body {
@@ -12,6 +14,7 @@ body {
 
 a {
   color: #ee2c9f;
+  font-weight: bold;
   text-decoration: none;
 }
 
