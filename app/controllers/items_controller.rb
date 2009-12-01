@@ -41,7 +41,13 @@ class ItemsController < ApplicationController
 
   def buy
     current_user.bought_items << Item.find(params[:id])
-    flash[:notice] = 'Item marked as bought!'
+    flash[:notice] = 'Item marked as bought :)'
+    redirect_to :back
+  end
+
+  def return
+    current_user.bought_items.delete(Item.find(params[:id]))
+    flash[:notice] = 'Item marked as returned! :('
     redirect_to :back
   end
 end

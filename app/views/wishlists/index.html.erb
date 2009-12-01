@@ -34,6 +34,32 @@
     </ul>
     <%= link_to 'add item', new_wishlist_item_path(@wishlist) %>
   <% end %>
+
+  <h1>Stuff You've Bought</h1>
+  <% if current_user.bought_items.count <= 0 %>
+    You haven't bought anything yet.  Get shopping.
+  <% else %>
+    <ul class="list compact">
+    <% current_user.bought_items.each do |item| %>
+      <li>
+        <div class="links">
+          <%= link_to 'return', return_wishlist_item_path(@wishlist, item), :method => :put %>
+        </div>
+        <div class="title">
+          <%= item.wishlist.user.name %>:
+          <% if item.url.blank? %>
+            <%=h item.name %>
+          <% else %>
+            <%= link_to h(item.name), h(item.url) %>
+          <% end %>
+        </div>
+        <div class="subtitle">
+          <%=h item.description %>
+        </div>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
 </div>
 
 <div class="right">

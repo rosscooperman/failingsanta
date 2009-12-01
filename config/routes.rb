@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :wishlists, :only => [:index] do |wishlist|
     wishlist.resources :items, :only => [:new, :create, :edit, :update, :destroy],
-                       :member => { :buy => :put }
+                       :member => { :buy => :put, :return => :put }
   end
 
   # root, named, etc. routes

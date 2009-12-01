@@ -23,7 +23,8 @@
     </ul>
     <% if current_user %>
       <div class="right">
-        Welcome, <%= current_user.name %> [ <%= link_to 'log out', logout_path %> ]
+        Welcome, <%= current_user.name %>
+        [ <%= link_to 'log out', logout_path, :method => :delete %> ]
       </div>
     <% end %>
   </div>
