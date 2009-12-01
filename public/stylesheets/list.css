@@ -38,3 +38,7 @@ ul.compact li .title {
 ul.compact li .links {
   margin-top: 0;
 }
+
+.missing {
+  margin-bottom: 25px;
+}

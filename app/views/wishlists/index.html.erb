@@ -1,6 +1,7 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag 'list' %>
   <%= stylesheet_link_tag 'wishlist' %>
+  <%= javascript_include_tag 'jquery', 'wishlist' %>
 <% end %>
 
 
@@ -37,6 +38,36 @@
 
 <div class="right">
   <h1>Their Stuff</h1>
+    <% if @users.count <= 0 %>
+      You are all alone.  I'm sorry dave.
+    <% elsif total_count(@users) <= 0 %>
+      There are no wishlists with items on them.  Sad.
+    <% else %>
+      <% if @user.wishlists.first.items.count <= 0 %>
+        <div class="missing"><%= @user.name %> longs for nothing</div>
+      <% else %>
+        <% @user.wishlists.first.items.each do |item| %>
+        <ul class="list compact">
+          <li>
+            <div class="title">
+              <% if item.url.blank? %>
+                <%=h item.name %>
+              <% else %>
+                <%= link_to h(item.name), h(item.url) %>
+              <% end %>
+            </div>
+            <div class="subtitle">
+              <%=h item.description %>
+            </div>
+          </li>
+        </ul>
+        <% end %>
+      <% end %>
+      <% form_tag wishlists_path, :method => :get do %>
+        <%= select_tag :id, user_options(@users) %>
+        <%= submit_tag 'change' %>
+      <% end %>
+    <% end %>
 </div>
 
 <div class="bottom"></div>

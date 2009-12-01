@@ -3,6 +3,7 @@ class WishlistsController < ApplicationController
 
   def index
     @wishlist = current_user.wishlists.first
-    @wishlists = Wishlist.find(:all, :conditions => "id <> #{@wishlist.id}")
+    @users = User.find(:all, :conditions => "id <> #{current_user.id}", :include => [:wishlists])
+    @user = (params[:id]) ? User.find(params[:id]) : @users.first
   end
 end
