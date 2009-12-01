@@ -1,3 +1,62 @@
-<h1><%=h @user.name %></h1>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'list', 'wishlist' %>
+<% end %>
 
-<%= link_to 'User List', users_path %>
+<div class="left">
+  <h1><%=h @user.name %></h1>
+  <table>
+    <tr>
+      <th>login</th>
+      <td><%=h @user.login %></td>
+    </tr>
+    <tr>
+      <th>email</th>
+      <td><%= link_to h(@user.email), "mailto:#{h(@user.email)}" %></td>
+    </tr>
+    <tr>
+      <th>admin?</th>
+      <td><%= (@user.admin?) ? 'yes' : 'no' %></td>
+    </tr>
+    <tr>
+      <th>logged in</th>
+      <td>
+        <%= pluralize @user.login_count, "time" %>
+        <% if @user.login_count > 0 %>
+          (last on <%= @user.current_login_at || @user.last_login_at %>)
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>created</th>
+      <td>
+        <%= @user.created_at %>
+      </td>
+    </tr>
+    <tr>
+      <th>updated</th>
+      <td>
+        <%= @user.updated_at %>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="left">
+  <h1>Wishlists</h1>
+  <% if @user.wishlists.count <= 0 %>
+    User has no wishlists.  Something is wrong.
+  <% else %>
+  <ul class="list compact">
+    <% @user.wishlists.each do |wishlist| %>
+    <li>
+      <div class="title"><%=h wishlist.name %></div>
+      <div class="subtitle"><%= pluralize wishlist.items.count, "item" %></div>
+    </li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>
+
+<div class="bottom">
+  <%= link_to '< back', :back %>
+</back>

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.randomize_password
     if @user.save
-      user.wishlists.create :name => 'Default Wishlist', :item_count => 0
+      @user.wishlists.create :name => 'Default Wishlist', :item_count => 0
       flash[:notice] = 'User created successfully'
       redirect_to @user
       @user.reset_perishable_token!

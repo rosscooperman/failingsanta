@@ -12,7 +12,7 @@
         <%= link_to 'edit', edit_user_path(user) %> |
         <%= link_to 'delete', user_path(user), :method => :delete, :confirm => 'Are you sure?' %>
       </div>
-      <div class="title"><%=h user.login %></div>
+      <div class="title"><%= link_to h(user.login), user %></div>
       <div class="subtitle">
         <%=h user.name %>
         (<%= link_to h(user.email), "mailto:#{h(user.email)}" %>)
