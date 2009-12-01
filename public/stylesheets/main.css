@@ -36,18 +36,49 @@ a:hover {
 }
 
 #header #menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   font-size: 1.3em;
 }
 
+#header #menu li {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 5px 10px;
+  background-color: #444;
+  border: 1px solid #444;
+  border-right-color: #bfd6da;
+  border-bottom: 0;
+}
+
+#header #menu li.hover {
+  background-color: white;
+  color: #444;
+  border-color: #444;
+}
+
+#header #menu li.hover a {
+  background-color: white;
+  color: #444;
+}
+
 #header #menu a {
+  color: white;
   font-size: 0.9em;
+}
+
+#header #menu a:hover {
+  color: white;
+  background-color: #444;
 }
 
 #content {
   clear: both;
   padding: 15px;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #444;
 }
 
 #notice, #error {

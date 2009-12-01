@@ -8,18 +8,19 @@
 <head>
   <title><%= h(yield(:title) || "Failing Santa") %></title>
   <%= stylesheet_link_tag "main", "form" %>
+  <%= javascript_include_tag 'jquery', 'application' %>
   <%= yield :head %>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 
 <body>
   <div id="header">
-    <div id="menu" class="left">
-      <%= link_to 'home', :root %>
+    <ul id="menu" class="left">
+      <%= menu_item 'home', :root %>
       <% if current_user && current_user.admin? %>
-        | <%= link_to 'manage users', users_path %>
+        <%= menu_item 'manage users', users_path %>
       <% end %>
-    </div>
+    </ul>
     <% if current_user %>
       <div class="right">
         Welcome, <%= current_user.name %> [ <%= link_to 'log out', logout_path %> ]

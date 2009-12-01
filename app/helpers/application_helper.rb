@@ -6,8 +6,7 @@ module ApplicationHelper
     end
   end
 
-  # def menu_path(menu)
-  #   return "#{menu}_index_path" if [:art].include?(menu)
-  #   "#{menu}_path"
-  # end
+  def menu_item(name, path)
+    "<li>#{link_to(name, path)}</li>"
+  end
 end
