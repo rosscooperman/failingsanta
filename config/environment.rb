@@ -6,7 +6,8 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   # Specify gems that this application depends on and have them installed with rake gems:install
-  config.gem 'authlogic', :version => '>=2.1'
+  config.gem 'authlogic',    :version => '>=2.1'
+  config.gem "newrelic_rpm", :version => '>=2.9'
 
   # Other settings
   config.time_zone = 'Eastern Time (US & Canada)'
