@@ -5,7 +5,7 @@ module WishlistsHelper
   end
 
   def user_options(users)
-    options = users.inject({}) { |opts, user| opts.merge Hash[user.name => user.id] }
+    options = users.map { |user| [ user.name, user.id ] }
     if params[:id]
       options_for_select(options, params[:id].to_i)
     else
