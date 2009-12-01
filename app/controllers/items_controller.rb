@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_filter :require_user
 
   def new
     @item = Wishlist.find(params[:wishlist_id]).items.build
@@ -36,5 +37,11 @@ class ItemsController < ApplicationController
       flash[:error] = 'Item could not be deleted'
     end
     redirect_to wishlists_path
+  end
+
+  def buy
+    current_user.bought_items << Item.find(params[:id])
+    flash[:notice] = 'Item marked as bought!'
+    redirect_to :back
   end
 end

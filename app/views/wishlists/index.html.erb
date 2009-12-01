@@ -46,9 +46,14 @@
       <% if @user.wishlists.first.items.count <= 0 %>
         <div class="missing"><%= @user.name %> longs for nothing</div>
       <% else %>
-        <% @user.wishlists.first.items.each do |item| %>
         <ul class="list compact">
-          <li>
+        <% @user.wishlists.first.items.each do |item| %>
+          <li class="<%= "grey" if item.buyer %>">
+            <% unless item.buyer %>
+              <div class="links">
+                <%= link_to 'buy', buy_wishlist_item_path(@wishlist, item), :method => :put %>
+              </div>
+            <% end %>
             <div class="title">
               <% if item.url.blank? %>
                 <%=h item.name %>
@@ -60,8 +65,8 @@
               <%=h item.description %>
             </div>
           </li>
-        </ul>
         <% end %>
+        </ul>
       <% end %>
       <% form_tag wishlists_path, :method => :get do %>
         <%= select_tag :id, user_options(@users) %>

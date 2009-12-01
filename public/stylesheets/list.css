@@ -11,6 +11,10 @@ ul.list li {
   border-bottom: 1px solid #ee2c9f;
 }
 
+ul.list li.grey {
+  background-color: #eee;
+}
+
 ul.list li .links {
   float: right;
   margin-top: 7px;
