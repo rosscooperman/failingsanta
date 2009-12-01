@@ -4,11 +4,19 @@ form {
   padding: 0;
 }
 
-form.small {
+form.two {
+  width: 200px;
+}
+
+form.three {
   width: 300px;
 }
 
-form.medium {
+form.four {
+  width: 400px;
+}
+
+form.five {
   width: 500px;
 }
 
