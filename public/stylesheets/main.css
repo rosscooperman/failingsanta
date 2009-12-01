@@ -23,9 +23,24 @@ a:hover {
   background-color: #ee2c9f;
 }
 
+#header .right, #header .left {
+  margin: 0.2em 0.1em;
+}
+
 #header .right {
   float: right;
-  margin: 10px 0;
+}
+
+#header .left {
+  float: left;
+}
+
+#header #menu {
+  font-size: 1.3em;
+}
+
+#header #menu a {
+  font-size: 0.9em;
 }
 
 #content {

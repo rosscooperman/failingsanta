@@ -1,0 +1,29 @@
+<%= error_messages_for :item %>
+
+<%
+  if controller.action_name == 'new' || controller.action_name == 'create'
+    type = 'Create'
+  else
+    type = 'Update'
+  end
+%>
+
+<% form_for [:wishlist, @item], :html => { :class => 'five' } do |f| %>
+  <h1><%= type %> Item</h1>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, :size => 30 %>
+  </p>
+  <p>
+    <%= f.label :url %>
+    <%= f.text_field :url, :size => 40 %>
+  </p>
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :description, :size => '40x5' %>
+  </p>
+  <p>
+    <%= f.submit "#{type} Item" %>
+    <%= link_to 'cancel', :back, :confirm => 'Are you sure?' %>
+  </p>
+<% end %>

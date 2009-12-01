@@ -1,10 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
   # resource routing
-  map.resources :users
   map.resource  :auth, :controller => :auth, :only => [:new, :create, :edit, :update, :destroy]
+  map.resources :users
+  map.resources :wishlists, :only => [:index, :show] do |wishlist|
+    wishlist.resources :items, :only => [:new, :create, :edit, :update, :destroy]
+  end
 
   # root, named, etc. routes
   map.login 'login', :controller => :auth, :action => 'new'
   map.logout 'logout', :controller => :auth, :action => 'destroy'
-  map.root :controller => 'users'
+  map.root :controller => 'wishlists'
 end

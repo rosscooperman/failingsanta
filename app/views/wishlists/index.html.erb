@@ -1,0 +1,42 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'list' %>
+  <%= stylesheet_link_tag 'wishlist' %>
+<% end %>
+
+
+<div class="left">
+  <h1>My Stuff</h1>
+  <% if @wishlist.items.count <= 0 %>
+    Looks like you don't have anything on your wishlist.  Why not
+    <%= link_to 'add something', new_wishlist_item_path(@wishlist) %> now?
+  <% else %>
+    <ul class="list compact">
+    <% @wishlist.items.each do |item| %>
+      <li>
+        <div class="links">
+          <%= link_to 'edit', edit_wishlist_item_path(@wishlist, item) %> |
+          <%= link_to 'delete', wishlist_item_path(@wishlist, item), :method => :delete,
+                      :confirm => 'Are you sure?' %>
+        </div>
+        <div class="title">
+          <% if item.url.blank? %>
+            <%=h item.name %>
+          <% else %>
+            <%= link_to h(item.name), h(item.url) %>
+          <% end %>
+        </div>
+        <div class="subtitle">
+          <%=h item.description %>
+        </div>
+      </li>
+    <% end %>
+    </ul>
+    <%= link_to 'add item', new_wishlist_item_path(@wishlist) %>
+  <% end %>
+</div>
+
+<div class="right">
+  <h1>Their Stuff</h1>
+</div>
+
+<div class="bottom"></div>

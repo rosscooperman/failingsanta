@@ -26,3 +26,15 @@ ul.list li .subtitle {
   font-style: italic;
   color: #666;
 }
+
+ul.compact li {
+  padding: 10px;
+}
+
+ul.compact li .title {
+  font-size: 1.2em;
+}
+
+ul.compact li .links {
+  margin-top: 0;
+}

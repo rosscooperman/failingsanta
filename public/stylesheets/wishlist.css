@@ -1,0 +1,13 @@
+#content .left {
+  width: 47%;
+  float: left;
+}
+
+#content .right {
+  width: 47%;
+  float: right;
+}
+
+#content .bottom {
+  clear: both;
+}
