@@ -1,0 +1,25 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'message' %>
+<% end %>
+
+<h1>Compose Message</h1>
+<% form_for @message do |f| %>
+  <p>
+    <%= f.label :recipient_ids, 'To' %>
+    <% @recipients.each do |r| %>
+      <%= check_box_tag "message[recipient_ids][]", r.id, @message.recipients.include?(r) %>
+      <%= r.name %>
+    <% end %>
+  </p>
+  <p>
+    <%= f.label :subject %>
+    <%= f.text_field :subject, :size => 40 %>
+  </p>
+  <p>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit 'Send' %>
+    <%= link_to 'cancel', :back, :confirm => 'Are you sure?' %>
+  </p>
+<% end %>

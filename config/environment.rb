@@ -15,5 +15,6 @@ Rails::Initializer.run do |config|
 end
 
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(
-  :default => '%m/%d/%Y'
+  :default  => '%D',
+  :withtime => '%D at %r'
 )

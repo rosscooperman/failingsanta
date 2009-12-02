@@ -1,0 +1,28 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'message' %>
+<% end %>
+
+<ul id="headers">
+  <li>
+    <div class="header">from</div>
+    <div class="value"><%=h @message.sender.name %></div>
+  </li>
+  <li>
+    <div class="header">to</div>
+    <div class="value"><%=h @message.recipients %></div>
+  </li>
+  <li>
+    <div class="header">subject</div>
+    <div class="value"><%=h @message.subject %></div>
+  </li>
+  <li>
+    <div class="header">date</div>
+    <div class="value"><%=h @message.created_at.to_s(:datetime) %></div>
+  </li>
+</ul>
+
+<div id="body">
+  <%= @message.body %>
+</div>
+
+<%= link_to '< back', :back %>

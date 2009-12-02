@@ -27,6 +27,7 @@ form p {
 
 label, input, textarea, select, button {
   font-size: 1.4em;
+  padding-right: 0.5em;
 }
 
 label {
