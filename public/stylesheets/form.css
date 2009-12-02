@@ -25,7 +25,7 @@ form p {
   padding: 0;
 }
 
-label, input, textarea {
+label, input, textarea, select, button {
   font-size: 1.4em;
 }
 

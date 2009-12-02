@@ -94,7 +94,7 @@
         <% end %>
         </ul>
       <% end %>
-      <% form_tag wishlists_path, :method => :get do %>
+      <% form_tag wishlists_path, :method => :get, :class => 'selector' do %>
         <%= select_tag :id, user_options(@users) %>
         <%= submit_tag 'change' %>
       <% end %>

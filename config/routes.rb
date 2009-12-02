@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   # resource routing
   map.resource  :auth, :controller => :auth, :only => [:new, :create, :edit, :update, :destroy]
   map.resources :users
-  map.resources :wishlists, :only => [:index] do |wishlist|
+  map.resources :wishlists, :only => [:index, :show] do |wishlist|
     wishlist.resources :items, :only => [:new, :create, :edit, :update, :destroy],
                        :member => { :buy => :put, :return => :put }
   end

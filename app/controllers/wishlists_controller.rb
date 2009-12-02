@@ -7,4 +7,9 @@ class WishlistsController < ApplicationController
                        :order => 'name ASC')
     @user = (params[:id]) ? User.find(params[:id]) : @users.first
   end
+
+  def show
+    index
+    render :action => 'index'
+  end
 end
