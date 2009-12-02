@@ -18,6 +18,20 @@ class MessagesController < ApplicationController
     @recipients = User.find(:all, :conditions => "id <> #{current_user.id}")
   end
 
+  def reply
+    original = Message.find(params[:id], :include => [:sender, :recipients])
+    subject = ((original.subject.match /^\s*re\:?\s*/i) ? '' : 'Re: ') + original.subject
+    body  = "\n\n\non #{original.created_at.to_s(:withtime)}, #{original.sender.name} wrote:\n\n"
+    body += "> #{original.body.gsub(/\n/, "> \n")}"
+    @message = Message.new(:subject => subject, :body => body)
+    @message.recipients << original.sender
+    if params[:all]
+      original.recipients.each { |r| @message.recipients << r unless r == current_user }
+    end
+    @recipients = User.find(:all, :conditions => "id <> #{current_user.id}")
+    render :action => 'new'
+  end
+
   def create
     @message = Message.new(params[:message])
     @message.sender = current_user
@@ -28,5 +42,17 @@ class MessagesController < ApplicationController
     else
       render :action => 'new'
     end
+  end
+
+  def destroy
+    @message = Message.find(params[:id], :include => [:recipients])
+    if @message.recipients.include?(current_user)
+      @message.recipients.delete(current_user)
+      @message.delete if @message.recipients.count <= 0
+      flash[:notice] = 'Message deleted successfully'
+    else
+      flash[:error] = 'You can only delete messages that were sent to you!'
+    end
+    redirect_to messages_path
   end
 end

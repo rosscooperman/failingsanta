@@ -17,7 +17,7 @@
   <tr>
     <td><%=h m.sender.name %></td>
     <td><%= truncate h(m.recipients), 25 %></td>
-    <td><%= link_to h(m.subject), m %></td>
+    <td><%= link_to truncate(h(m.subject), 25), m %></td>
     <td><%= m.created_at.to_s(:withtime) %></td>
   </tr>
 <% end %>

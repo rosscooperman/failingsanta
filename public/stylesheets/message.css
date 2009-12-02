@@ -1,6 +1,7 @@
 #message_body {
-  width: 100%;
+  width: 98%;
   height: 10em;
+  font-family: monospace;
 }
 
 .container {
@@ -55,4 +56,10 @@ ul#headers .header {
 
 #body {
   margin: 15px;
+  white-space: pre;
+}
+
+#options {
+  border-top: 1px solid #ee2c9f;
+  padding-top: 10px;
 }

@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
     wishlist.resources :items, :only => [:new, :create, :edit, :update, :destroy],
                        :member => { :buy => :put, :return => :put }
   end
-  map.resources :messages
+  map.resources :messages, :member => { :reply => :get }
 
   # root, named, etc. routes
   map.login 'login', :controller => :auth, :action => 'new'

@@ -2,6 +2,8 @@
   <%= stylesheet_link_tag 'message' %>
 <% end %>
 
+<%= link_to '< back', messages_path %>
+
 <ul id="headers">
   <li>
     <div class="header">from</div>
@@ -21,8 +23,10 @@
   </li>
 </ul>
 
-<div id="body">
-  <%= @message.body %>
-</div>
+<div id="body"><%= @message.body %></div>
 
-<%= link_to '< back', :back %>
+<div id="options">
+  <%= link_to 'reply', reply_message_path(@message) %> |
+  <%= link_to 'reply to all', reply_message_path(@message, :all => true) %> |
+  <%= link_to 'delete', @message, :method => :delete, :confirm => 'Are you sure?' %>
+</div>
