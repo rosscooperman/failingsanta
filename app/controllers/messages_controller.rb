@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = Message.find(params[:id], :include => [:sender, :recipients])
+    @message = Message.find(params[:id], :joins => [:sender, :recipients])
     unless @message.recipients.include?(current_user)
       flash[:error] = 'You can only view messages that were sent to you!'
       redirect_to messages_path
@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
   end
 
   def reply
-    original = Message.find(params[:id], :include => [:sender, :recipients])
+    original = Message.find(params[:id], :joins => [:sender, :recipients])
     subject = ((original.subject.match /^\s*re\:?\s*/i) ? '' : 'Re: ') + original.subject
     body  = "\n\n\non #{original.created_at.to_s(:withtime)}, #{original.sender.name} wrote:\n\n"
     body += "> #{original.body.gsub(/\n/, "> \n")}"
@@ -45,7 +45,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message = Message.find(params[:id], :include => [:recipients])
+    @message = Message.find(params[:id], :joins => [:recipients])
     if @message.recipients.include?(current_user)
       @message.recipients.delete(current_user)
       @message.delete if @message.recipients.count <= 0
