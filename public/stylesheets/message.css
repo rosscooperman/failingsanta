@@ -56,7 +56,7 @@ ul#headers .header {
 
 #body {
   margin: 15px;
-  white-space: pre;
+  white-space: pre-wrap;
 }
 
 #options {
