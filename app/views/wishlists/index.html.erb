@@ -75,11 +75,14 @@
         <ul class="list compact">
         <% @user.wishlists.first.items.each do |item| %>
           <li class="<%= "grey" if item.buyer %>">
-            <% unless item.buyer %>
-              <div class="links">
-                <%= link_to 'buy', buy_wishlist_item_path(@wishlist, item), :method => :put %>
-              </div>
-            <% end %>
+            <div class="links">
+              <% if item.buyer %>
+                bought by <%= item.buyer.name %>
+              <% else %>
+                <%= link_to 'mark as bought', buy_wishlist_item_path(@wishlist, item),
+                            :method => :put %>
+              <% end %>
+            </div>
             <div class="title">
               <% if item.url.blank? %>
                 <%=h item.name %>

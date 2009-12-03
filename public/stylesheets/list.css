@@ -7,6 +7,8 @@ ul.list {
 }
 
 ul.list li {
+  display: block;
+  position: relative;
   padding: 15px;
   border-bottom: 1px solid #ee2c9f;
 }
@@ -18,6 +20,7 @@ ul.list li.grey {
 ul.list li .links {
   float: right;
   margin-top: 7px;
+  font-weight: bold;
 }
 
 ul.list li .title {
