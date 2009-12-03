@@ -8,7 +8,7 @@
   end
 %>
 
-<% form_for [:wishlist, @item], :html => { :class => 'five' } do |f| %>
+<% form_for [@item.wishlist, @item], :html => { :class => 'five' } do |f| %>
   <h1><%= type %> Item</h1>
   <p>
     <%= f.label :name %>
