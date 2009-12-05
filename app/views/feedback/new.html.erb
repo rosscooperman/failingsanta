@@ -1,0 +1,14 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'feedback' %>
+<% end %>
+
+<h1>Comment</h1>
+<% form_for @feedback do |f| %>
+  <p>
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit 'Send' %>
+    <%= link_to 'cancel', :back, :confirm => 'Are you sure?' %>
+  </p>
+<% end %>

@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
                        :member => { :buy => :put, :return => :put }
   end
   map.resources :messages, :member => { :reply => :get }
+  map.resource :feedback, :only => [ :new, :create ]
 
   # root, named, etc. routes
   map.login 'login', :controller => :auth, :action => 'new'

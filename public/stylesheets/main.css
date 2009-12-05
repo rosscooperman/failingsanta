@@ -23,6 +23,12 @@ a:hover {
   background-color: #ee2c9f;
 }
 
+#feedback {
+  position: fixed;
+  top: 50px;
+  left: 0;
+}
+
 #header .right, #header .left {
   margin: 0.2em 0.1em;
 }
