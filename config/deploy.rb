@@ -28,3 +28,5 @@ namespace :deploy do
         task t, :roles => :app do ; end
     end
 end
+
+after "deploy", "deploy:cleanup"
