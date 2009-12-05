@@ -5,6 +5,7 @@ set :deploy_to,   "/var/www/apps/#{application}"
 set :scm,           :git
 set :deploy_via,    :remote_cache
 set :branch,        variables['branch'] || 'master'
+set :keep_releases, 10
 
 set :use_sudo,      false
 set :user,          "deploy"
