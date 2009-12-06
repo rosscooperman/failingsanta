@@ -19,7 +19,15 @@ $(function() {
   );
 });
 
+function ajaxCancel() {
+  $('a.cancel').bind('click', function(e) {
+    e.preventDefault();
+    $.fn.colorbox.close();
+  });
+}
+
 // ajaxify forms with the 'ajaxify' class
 $(function() {
-  $('a.ajaxify').colorbox({ width: '75%' });
+  $('a.ajaxify').colorbox({ width: '75%', onComplete: ajaxCancel });
 });
+
