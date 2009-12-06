@@ -12,6 +12,10 @@ body {
   margin: 25px auto;
 }
 
+img {
+  border: 0;
+}
+
 a {
   color: #ee2c9f;
   font-weight: bold;
