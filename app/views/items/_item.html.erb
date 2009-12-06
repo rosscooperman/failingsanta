@@ -11,7 +11,7 @@
 <% form_for [@item.wishlist, @item], :html => { :class => 'five' } do |f| %>
   <h1><%= type %> Item</h1>
   <p>
-    <%= f.label :name %>
+    <%= f.label :name, 'Short Description' %>
     <%= f.text_field :name, :size => 30 %>
   </p>
   <p>
@@ -19,7 +19,7 @@
     <%= f.text_field :url, :size => 40 %>
   </p>
   <p>
-    <%= f.label :description %>
+    <%= f.label :description, 'Long Description' %>
     <%= f.text_area :description, :size => '40x5' %>
   </p>
   <p>
