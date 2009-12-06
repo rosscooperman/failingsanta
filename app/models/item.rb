@@ -3,6 +3,10 @@ class Item < ActiveRecord::Base
   belongs_to :buyer, :class_name => 'User'
 
   def url=(val)
-    self[:url] = (val.match /^\w*\:\/\//) ? val : "http://#{val}" unless val.blank?
+    if val.blank?
+      self[:url] = val
+    else
+      self[:url] = (val.match /^\w*\:\/\//) ? val : "http://#{val}"
+    end
   end
 end
