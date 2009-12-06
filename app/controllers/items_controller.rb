@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Wishlist.find(params[:wishlist_id]).items.build
+    render :layout => false if request.xhr?
   end
 
   def create

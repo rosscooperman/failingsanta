@@ -7,3 +7,6 @@ log/*
 
 # IDE "stuff"
 *.tmproj
+
+# OS "stuff"
+.DS_Store

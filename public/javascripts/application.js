@@ -1,3 +1,4 @@
+// attach hover functionlity to elements that warrant such treatment
 $(function() {
   $("#menu li").hover(
     function() { $(this).addClass('hover'); },
@@ -16,4 +17,9 @@ $(function() {
       image.attr('src', src);
     }
   );
+});
+
+// ajaxify forms with the 'ajaxify' class
+$(function() {
+  $('a.ajaxify').colorbox({ width: '75%' });
 });

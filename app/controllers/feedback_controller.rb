@@ -2,6 +2,7 @@ class FeedbackController < ApplicationController
 
   def new
     @feedback = Feedback.new
+    render :layout => false if request.xhr?
   end
 
   def create
