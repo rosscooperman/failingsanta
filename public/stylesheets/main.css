@@ -12,6 +12,12 @@ body {
   margin: 25px auto;
 }
 
+h1 {
+  margin: 15px 0;
+  font-size: 2em;
+  font-weight: bold;
+}
+
 img {
   border: 0;
 }

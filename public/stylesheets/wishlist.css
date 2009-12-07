@@ -1,3 +1,9 @@
+.heading {
+  margin: 15px 0;
+  font-size: 2em;
+  font-weight: bold;
+}
+
 #content .left {
   width: 47%;
   float: left;

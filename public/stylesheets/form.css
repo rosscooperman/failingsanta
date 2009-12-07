@@ -33,3 +33,10 @@ label, input, textarea, select, button {
 label {
   display: block;
 }
+
+.selector {
+  font-size: 0.5em;
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 0;
+}

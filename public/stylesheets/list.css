@@ -35,6 +35,8 @@ ul.list li .subtitle {
 }
 
 ul.compact li {
+  position: static;
+  z-index: 50;
   padding: 10px;
 }
 

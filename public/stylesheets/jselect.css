@@ -1,0 +1,42 @@
+.jselect {
+  position: relative;
+  margin-top: -0.30em;
+}
+
+.jselect .title {
+  background: #eee url(images/jselect_arrow.png) no-repeat center right;
+  border: 1px solid #999;
+  vertical-align: middle;
+  padding: 0.1em 0.3em 0.05em 0.2em;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.jselect .title-over {
+  background-image: url(images/jselect_arrow_over.png);
+}
+
+.jselect ul {
+  position: absolute;
+  list-style: none;
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  background-color: #eee;
+  border: 1px solid #999;
+  border-width: 0 1px;
+  z-index: 50;
+}
+
+.jselect li {
+  vertical-align: middle;
+  padding: 0.15em 0.5em 0.05em 0.5em;
+  border-bottom: 1px solid #999;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.jselect li.selected {
+  color: white;
+  background-color: #999;
+}
