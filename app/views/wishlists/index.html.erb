@@ -68,40 +68,10 @@
     <% end %>
     Stuff
   </div>
-  <% if @users.count <= 0 %>
-    You are all alone.  I'm sorry dave.
-  <% elsif total_count(@users) <= 0 %>
-    There are no wishlists with items on them.  Sad.
-  <% else %>
-    <% if @user.wishlists.first.items.count <= 0 %>
-      <div class="missing"><%= @user.name %> longs for nothing</div>
-    <% else %>
-      <ul class="list compact">
-      <% @user.wishlists.first.items.each do |item| %>
-        <li class="<%= "grey" if item.buyer %>">
-          <div class="links">
-            <% if item.buyer %>
-              bought by <%= item.buyer.name %>
-            <% else %>
-              <%= link_to 'mark as bought', buy_wishlist_item_path(@wishlist, item),
-                          :method => :put %>
-            <% end %>
-          </div>
-          <div class="title">
-            <% if item.url.blank? %>
-              <%=h item.name %>
-            <% else %>
-              <%= link_to h(item.name), h(item.url) %>
-            <% end %>
-          </div>
-          <div class="subtitle">
-            <%=h item.description %>
-          </div>
-        </li>
-      <% end %>
-      </ul>
-    <% end %>
-  <% end %>
+  <div id="theirlist">
+    <%= render :partial => 'wishlist' %>
+  </div>
+  <div id="loading" style="display: none;"><%= image_tag 'loading.gif' %></div>
 </div>
 
 <div class="bottom"></div>

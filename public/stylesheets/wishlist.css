@@ -17,3 +17,11 @@
 #content .bottom {
   clear: both;
 }
+
+#loading {
+  text-align: center;
+}
+
+#loading img {
+  display: inline;
+}

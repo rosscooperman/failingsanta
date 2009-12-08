@@ -10,6 +10,10 @@ class WishlistsController < ApplicationController
 
   def show
     index
-    render :action => 'index'
+    if request.xhr?
+      render :partial => 'wishlist', :layout => false
+    else
+      render :action => 'index'
+    end
   end
 end
