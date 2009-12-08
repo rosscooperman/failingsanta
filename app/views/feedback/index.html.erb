@@ -1,0 +1,18 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'list' %>
+<% end %>
+
+<h1>Feedback</h1>
+
+<% if @feedback.count > 0 %>
+  <ul class="list">
+  <% @feedback.each do |entry| %>
+    <li>
+      <div class="title"><%=h entry.user.name if entry.user %></div>
+      <div class="subtitle">
+        <%=h entry.comment %>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :bought_items, :class_name => 'Item', :foreign_key => :buyer_id
   has_many :receipts, :foreign_key => :recipient_id
   has_many :messages, :through => :receipts
+  has_many :feedback
 
   acts_as_authentic do |config|
     config.ignore_blank_passwords = true
