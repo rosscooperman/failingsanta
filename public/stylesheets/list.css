@@ -23,6 +23,11 @@ ul.list li .links {
   font-weight: bold;
 }
 
+ul.list li .pretitle {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
 ul.list li .title {
   font-size: 2em;
   font-weight: bold;
@@ -42,6 +47,10 @@ ul.compact li {
 
 ul.compact li .title {
   font-size: 1.2em;
+}
+
+ul.compact li .pretitle {
+  font-size: 1.1em;
 }
 
 ul.compact li .links {

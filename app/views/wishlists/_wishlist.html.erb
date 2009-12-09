@@ -31,4 +31,41 @@
         <% end %>
         </ul>
       <% end %>
+      <h1>Recomendations</h1>
+      <% if @user.recommendations_for.count <= 0 %>
+        <div class="missing">
+          Nobody has recommended anything for <%= @user.name %>. You could be first!
+        </div>
+      <% else %>
+        <ul class="list compact">
+          <% @user.recommendations_for.each do |r| %>
+          <li class="<%= "grey" if r.buyer %>">
+            <div class="links">
+              <% if r.buyer %>
+                bought by <%= r.buyer.name %>
+              <% elsif r.by == current_user %>
+                <%= link_to 'edit', edit_recommendation_path(r) %> |
+                <%= link_to 'delete', recommendation_path(r), :method => :delete,
+                            :confirm => 'Are you sure?' %>
+              <% else %>
+                <%= link_to 'mark as bought', buy_recommendation_path(r), :method => :put %>
+              <% end %>
+            </div>
+            <div class="pretitle"><%=h r.by.name %> recommends:</div>
+            <div class="title">
+              <% if r.url.blank? %>
+                <%=h r.name %>
+              <% else %>
+                <%= link_to h(r.name), h(r.url) %>
+              <% end %>
+            </div>
+            <div class="subtitle">
+              <%=h r.description %>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      <% end %>
+      <%= link_to 'make a recomendation', new_user_recommendation_path(@user),
+                  :class => 'ajaxify' %>
     <% end %>

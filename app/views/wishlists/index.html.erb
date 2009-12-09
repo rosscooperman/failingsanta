@@ -34,7 +34,7 @@
   <% end %>
 
   <h1>Stuff You've Bought</h1>
-  <% if current_user.bought_items.count <= 0 %>
+  <% if current_user.bought_items.count + current_user.recommendations_bought.count <= 0 %>
     You haven't bought anything yet.  Get shopping.
   <% else %>
     <ul class="list compact">
@@ -53,6 +53,24 @@
         </div>
         <div class="subtitle">
           <%=h item.description %>
+        </div>
+      </li>
+    <% end %>
+    <% current_user.recommendations_bought.each do |r| %>
+      <li>
+        <div class="links">
+          <%= link_to 'return', return_recommendation_path(r), :method => :put %>
+        </div>
+        <div class="title">
+          <%= r.for.name %>:
+          <% if r.url.blank? %>
+            <%=h r.name %>
+          <% else %>
+            <%= link_to h(r.name), h(r.url) %>
+          <% end %>
+        </div>
+        <div class="subtitle">
+          <%=h r.description %>
         </div>
       </li>
     <% end %>

@@ -1,0 +1,10 @@
+<%= error_messages_for :recommendation %>
+
+<% form_for [@recommendation.for, @recommendation], :html => { :class => 'five' } do |f| %>
+  <h1>Create Recommendation</h1>
+  <%= render :partial => 'recommendation', :locals => { :f => f } %>
+  <p>
+    <%= f.submit "Create Recommendation" %>
+    <%= link_to 'cancel', :back, :confirm => 'Are you sure?', :class => 'cancel' %>
+  </p>
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  by_id: 1
+  for_id: 1
+  buyer_id: 1
+  name: MyString
+  description: MyText
+  url: MyString
+
+two:
+  by_id: 1
+  for_id: 1
+  buyer_id: 1
+  name: MyString
+  description: MyText
+  url: MyString
