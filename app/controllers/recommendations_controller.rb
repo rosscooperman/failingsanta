@@ -33,6 +33,17 @@ class RecommendationsController < ApplicationController
     end
   end
 
+  def destroy
+    return unless can_edit(recommendation = Recommendation.find(params[:id]))
+
+    if recommendation.destroy
+      flash[:notice] = 'Recommendation deleted successfully'
+    else
+      flash[:error] = 'Recommendation could not be deleted'
+    end
+    redirect_to :root
+  end
+
   def buy
     current_user.recommendations_bought << Recommendation.find(params[:id])
     flash[:notice] = 'Recommendation marked as bought :)'
@@ -47,8 +58,8 @@ class RecommendationsController < ApplicationController
 
   private
 
-  def can_edit(recommentation)
-    if @recommendation.by != current_user
+  def can_edit(recommendation)
+    if recommendation.by != current_user
       flash[:error] = "You cannot edit a recommendation you didn't make"
       redirect_to :root
       false
