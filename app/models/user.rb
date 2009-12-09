@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   acts_as_authentic do |config|
     config.ignore_blank_passwords = true
-    config.perishable_token_valid_for = 1.month
+    config.perishable_token_valid_for = 2.weeks
+    config.disable_perishable_token_maintenance = true
   end
 end

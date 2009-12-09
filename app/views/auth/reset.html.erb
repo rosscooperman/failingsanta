@@ -1,0 +1,9 @@
+<% form_for @user, :url => { :action => :doreset }, :html => { :method => :put } do |f| %>
+  <p>
+    <%= f.label :email, 'What email address did you sign up with?' %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.submit 'Email my username and password' %>
+  </p>
+<% end %>

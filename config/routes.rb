@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   # resource routing
-  map.resource  :auth, :controller => :auth, :only => [:new, :create, :edit, :update, :destroy]
+  map.resource  :auth, :controller => :auth, :only => [:new, :create, :edit, :update, :destroy],
+                                             :member => { :reset => :get, :doreset => :put }
   map.resources :users do |users|
     users.resources :recommendations, :only => [ :new, :create ]
   end

@@ -1,5 +1,4 @@
-<% form_for :session, @session, :url => { :action => 'create' },
-            :html => { :class => 'two' } do |f| %>
+<% form_for :session, @session, :url => { :action => 'create' } do |f| %>
   <p>
     <%= f.label :login, 'Username' %>
     <%= f.text_field :login, :size => 15 %>
@@ -12,3 +11,6 @@
     <%= f.submit 'Login' %>
   </p>
 <% end %>
+<div id="reset">
+  <%= link_to 'Help! I forgot my username or password.', reset_auth_path %>
+</div>

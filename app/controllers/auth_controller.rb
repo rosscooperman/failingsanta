@@ -41,6 +41,24 @@ class AuthController < ApplicationController
   def destroy
     current_user_session.destroy
     flash[:notice] = "Logout successful!"
-    redirect_to :root
+    redirect_to :login
+  end
+
+  def reset
+    @user = User.new
+  end
+
+  def doreset
+    user = User.find_by_email(params[:user][:email])
+    if user
+      user.reset_perishable_token!
+      Notifier.deliver_password_reset(user)
+      flash[:notice] = 'Username and password sent!'
+      redirect_to :login
+    else
+      flash[:error] = 'No user exists with that email address'
+      @user = User.new
+      render :action => 'reset'
+    end
   end
 end
