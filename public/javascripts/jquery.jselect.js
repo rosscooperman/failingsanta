@@ -107,10 +107,12 @@ var JSelect = {
     jselect.find('.title').width(width);
 
     // make sure what's selected is what should be selected
+    //TODO make this more generalized
     var selected = $.bbq.getState('list', true);
     if (selected != undefined) {
       var selectedElement = jselect.find('li#' + selected);
       jselect.find('.title').html(selectedElement.html());
+      jselect.find('input[type=hidden]').val(selected);
       selectedElement.trigger('mouseenter');
     }
   },

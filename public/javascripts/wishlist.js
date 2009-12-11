@@ -9,21 +9,29 @@ $(function() {
     });
   });
 
-  $(window).bind('hashchange', function() {
+  $(window).bind('hashchange', function(e, load) {
     var list = $.bbq.getState('list');
     if (list != undefined) {
       //TODO fix the fact that the path here is hard-coded
       var url = '/wishlists/' + list;
-      $('#theirlist').slideUp(125, function() {
+
+      if (load) {
+        $('#theirlist').html('');
         $('#loading').show();
-        $.get(url, function(wishlist) {
-          $('#loading').hide();
-          $('#theirlist').html(wishlist);
-          $('#theirlist').slideDown(125);
+        $('#theirlist').load(url, function() { $('#loading').hide(); });
+      }
+      else {
+        $('#theirlist').slideUp(125, function() {
+          $('#loading').show();
+          $.get(url, function(wishlist) {
+            $('#loading').hide();
+            $('#theirlist').html(wishlist);
+            $('#theirlist').slideDown(125);
+          });
         });
-      });
+      }
     }
   });
 
-  $(window).trigger('hashchange');
+  $(window).trigger('hashchange', true);
 });
