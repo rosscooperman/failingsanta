@@ -101,9 +101,17 @@ var JSelect = {
     }
   },
 
-  resizeTitle: function(jselect) {
+  fixTitle: function(jselect) {
+    // adjust the width to slightly more than the maximum width item in the list
     var width = jselect.find('ul').width();
     jselect.find('.title').width(width);
+
+    // make sure what's selected is what should be selected
+    var selected = $.bbq.getState('list', true);
+    if (selected != undefined) {
+      var newTitle = jselect.find('li#' + selected).html();
+      jselect.find('.title').html(newTitle);
+    }
   },
 
   setTimer: function(event) {
@@ -124,7 +132,7 @@ jQuery.fn.jselect = function(options) {
       var newContent = JSelect.generateContent(this);
       $(this).replaceWith(newContent);
 
-      JSelect.resizeTitle(parent.find('.jselect'));
+      JSelect.fixTitle(parent.find('.jselect'));
       JSelect.processOptions(parent.find('.jselect'), options);
 
       parent.find('.jselect').mouseleave(JSelect.setTimer);
@@ -132,7 +140,7 @@ jQuery.fn.jselect = function(options) {
       parent.find('.jselect .title').bind('mouseenter mouseleave', JSelect.toggleOver);
       parent.find('.jselect .title').click(JSelect.handleClick);
       parent.find('.jselect li').mouseenter(JSelect.selectOption)
-      $(document).bind('click', JSelect.closeAll);
+      $(document).click(JSelect.closeAll);
     }
   });
 
