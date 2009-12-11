@@ -109,8 +109,9 @@ var JSelect = {
     // make sure what's selected is what should be selected
     var selected = $.bbq.getState('list', true);
     if (selected != undefined) {
-      var newTitle = jselect.find('li#' + selected).html();
-      jselect.find('.title').html(newTitle);
+      var selectedElement = jselect.find('li#' + selected);
+      jselect.find('.title').html(selectedElement.html());
+      selectedElement.trigger('mouseenter');
     }
   },
 
@@ -132,15 +133,15 @@ jQuery.fn.jselect = function(options) {
       var newContent = JSelect.generateContent(this);
       $(this).replaceWith(newContent);
 
-      JSelect.fixTitle(parent.find('.jselect'));
-      JSelect.processOptions(parent.find('.jselect'), options);
-
       parent.find('.jselect').mouseleave(JSelect.setTimer);
       parent.find('.jselect').mouseenter(JSelect.clearTimer);
       parent.find('.jselect .title').bind('mouseenter mouseleave', JSelect.toggleOver);
       parent.find('.jselect .title').click(JSelect.handleClick);
       parent.find('.jselect li').mouseenter(JSelect.selectOption)
       $(document).click(JSelect.closeAll);
+
+      JSelect.processOptions(parent.find('.jselect'), options);
+      JSelect.fixTitle(parent.find('.jselect'));
     }
   });
 
