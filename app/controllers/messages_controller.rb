@@ -2,12 +2,16 @@ class MessagesController < ApplicationController
   before_filter :require_user
 
   def index
-    @messages = current_user.messages
+    if params[:sent]
+      @messages = current_user.sent_messages
+    else
+      @messages = current_user.messages
+    end
   end
 
   def show
     @message = Message.find(params[:id], :joins => [:sender, :recipients])
-    unless @message.recipients.include?(current_user)
+    unless @message.sender == current_user || @message.recipients.include?(current_user)
       flash[:error] = 'You can only view messages that were sent to you!'
       redirect_to messages_path
     end

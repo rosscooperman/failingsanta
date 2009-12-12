@@ -3,7 +3,8 @@
 <% end %>
 
 <div id="controls">
-  <%= link_to 'compose', new_message_path %>
+  <%= link_to 'compose', new_message_path %> |
+  <%= link_to 'sent mail', messages_path(:sent => true) %>
 </div>
 
 <table id="messages">
