@@ -42,14 +42,16 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    current_user.bought_items << Item.find(params[:id])
+    item = Item.find(params[:id])
+    current_user.bought_items << item
     flash[:notice] = 'Item marked as bought :)'
-    redirect_to :back
+    redirect_to wishlist_path(item.wishlist)
   end
 
   def return
-    current_user.bought_items.delete(Item.find(params[:id]))
+    item = Item.find(params[:id])
+    current_user.bought_items.delete(item)
     flash[:notice] = 'Item marked as returned! :('
-    redirect_to :back
+    redirect_to wishlist_path(item.wishlist)
   end
 end

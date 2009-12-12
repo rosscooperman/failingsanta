@@ -45,15 +45,17 @@ class RecommendationsController < ApplicationController
   end
 
   def buy
-    current_user.recommendations_bought << Recommendation.find(params[:id])
+    recommendation = Recommendation.find(params[:id])
+    current_user.recommendations_bought << recommendation
     flash[:notice] = 'Recommendation marked as bought :)'
-    redirect_to :back
+    redirect_to wishlist_path(recommendation.for.wishlists.first)
   end
 
   def return
-    current_user.recommendations_bought.delete(Recommendation.find(params[:id]))
+    recommendation = Recommendation.find(params[:id])
+    current_user.recommendations_bought.delete(recommendation)
     flash[:notice] = 'Recommendation marked as returned! :('
-    redirect_to :back
+    redirect_to wishlist_path(recommendation.for.wishlists.first)
   end
 
   private
