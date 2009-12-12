@@ -49,10 +49,9 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message = Message.find(params[:id], :joins => [:recipients])
-    if @message.recipients.include?(current_user)
-      @message.recipients.delete(current_user)
-      @message.delete if @message.recipients.count <= 0
+    receipt = current_user.receipts.find_by_message_id(params[:id])
+    # @message = Message.find(params[:id], :joins => [:recipients])
+    if receipt && receipt.update_attribute(:deleted, true)
       flash[:notice] = 'Message deleted successfully'
     else
       flash[:error] = 'You can only delete messages that were sent to you!'

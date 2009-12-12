@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :wishlists
   has_many :bought_items, :class_name => 'Item', :foreign_key => :buyer_id
-  has_many :receipts, :foreign_key => :recipient_id
+  has_many :receipts, :foreign_key => :recipient_id, :conditions => { :deleted => false }
   has_many :messages, :through => :receipts
   has_many :sent_messages, :class_name => 'Message', :foreign_key => :sender_id
   has_many :feedback
