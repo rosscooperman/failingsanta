@@ -11,7 +11,7 @@ $(function() {
     theme_advanced_layout_manager:   "RowLayout",
 
     theme_advanced_containers: "controls,editor",
-    theme_advanced_container_controls: "bold,italic,underline,strikethrough",
+    theme_advanced_container_controls: "bold,italic,underline,strikethrough,|,forecolor,backcolor",
     theme_advanced_container_controls_align: "left",
     theme_advanced_container_editor: "mceEditor",
   });
