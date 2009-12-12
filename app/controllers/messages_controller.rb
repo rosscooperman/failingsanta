@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
     original = Message.find(params[:id], :joins => [:sender, :recipients])
     subject = ((original.subject.match /^\s*re\:?\s*/i) ? '' : 'Re: ') + original.subject
     body  = "\n\n\non #{original.created_at.to_s(:withtime)}, #{original.sender.name} wrote:\n\n"
-    body += "> #{original.body.gsub(/\n/, "> \n")}"
+    body += original.body.gsub(/(.{1,60}\w*)\s*/, "> \\1\n")
     @message = Message.new(:subject => subject, :body => body)
     @message.recipients << original.sender
     if params[:all]
