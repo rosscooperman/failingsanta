@@ -23,7 +23,7 @@
   </li>
 </ul>
 
-<div id="body"><%= @message.body %></div>
+<div id="body"><%= sanitize(@message.body) %></div>
 
 <div id="options">
   <%= link_to 'reply', reply_message_path(@message) %> |

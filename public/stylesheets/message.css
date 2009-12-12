@@ -1,6 +1,6 @@
 #message_body {
   width: 98%;
-  height: 10em;
+  height: 15em;
   font-family: monospace;
 }
 
@@ -57,7 +57,20 @@ ul#headers .header {
 
 #body {
   margin: 15px;
-  white-space: pre-wrap;
+}
+
+#body ol, #body ul {
+  margin: 0 0 20px 0;
+}
+
+#body li {
+  margin: 5px 0;
+  padding: 0;
+}
+
+#body p {
+  margin: 0 0 20px 0;
+  padding: 0;
 }
 
 #options {

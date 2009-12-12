@@ -13,6 +13,8 @@ Rails::Initializer.run do |config|
   # Other settings
   config.time_zone = 'Eastern Time (US & Canada)'
   config.action_mailer.default_content_type = 'text/html'
+
+  config.action_view.sanitized_allowed_attributes = 'style'
 end
 
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(
