@@ -1,5 +1,3 @@
-<%= error_messages_for :item %>
-
 <%
   if controller.action_name == 'new' || controller.action_name == 'create'
     type = 'Create'
@@ -9,6 +7,7 @@
 %>
 
 <% form_for [@item.wishlist, @item], :html => { :class => 'five' } do |f| %>
+  <%= error_messages_for :item %>
   <h1><%= type %> Item</h1>
   <p>
     <%= f.label :name, 'Short Description' %>

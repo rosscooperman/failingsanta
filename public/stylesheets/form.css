@@ -40,3 +40,18 @@ label {
   margin: 0 10px 0 0;
   padding: 0;
 }
+
+.errorExplanation {
+  background-color: #fcc;
+  border: 1px solid #b11;
+  padding: 10px;
+}
+
+.errorExplanation h2 {
+  color: #b11;
+  margin: 0 0 7px 0;
+}
+
+.fieldWithErrors label {
+  color: #b11;
+}
