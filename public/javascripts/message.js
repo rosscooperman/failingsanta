@@ -4,6 +4,7 @@ $(function() {
   $('textarea').tinymce({
     extended_valid_elements: "img[src|alt|mce_src|title|border]",
     document_base_url: baseUrl,
+    relative_urls: false,
     theme: "advanced",
     plugins: "safari,emotions",
     content_css: $('link[href*=tinymce\.css]').attr('href'),
