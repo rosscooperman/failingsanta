@@ -1,3 +1,13 @@
 .mceContentBody {
   font-size: 1em;
 }
+
+.mceContentBody p {
+  margin: 1em 0;
+}
+
+.mceContentBody blockquote {
+  margin: 0;
+  padding: 0 0 0 1em;
+  border-left: 1px solid #ee2c9f;
+}

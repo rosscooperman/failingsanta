@@ -68,6 +68,12 @@ ul#headers .header {
   padding: 0;
 }
 
+#body blockquote {
+  margin: 0;
+  padding: 0 0 0 1em;
+  border-left: 1px solid #ee2c9f;
+}
+
 #body p {
   margin: 0 0 20px 0;
   padding: 0;
