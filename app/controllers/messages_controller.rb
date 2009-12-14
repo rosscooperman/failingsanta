@@ -52,13 +52,11 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    receipt = current_user.receipts.find_by_message_id(params[:id])
-    # @message = Message.find(params[:id], :joins => [:recipients])
-    if receipt && receipt.update_attribute(:deleted, true)
+    if Message.find(params[:id]).destroy
       flash[:notice] = 'Message deleted successfully'
     else
       flash[:error] = 'You can only delete messages that were sent to you!'
     end
-    redirect_to messages_path
+    redirect_to mailbox_path(current_user.inbox)
   end
 end
