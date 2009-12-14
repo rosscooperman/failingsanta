@@ -1,7 +1,8 @@
 <%=h @user.name%>,<br />
 <br />
 Somebody has sent you a message through failingsanta.com.  Visit the failingsanta.com
-message center at <%= link_to messages_url, messages_url %> to read the message<br />
+message center at <%= link_to mailbox_url(@user.inbox), mailbox_url(@user.inbox) %> to read the
+message<br />
 <br />
 Ho! Ho! Ho?,<br />
 Failing Santa
