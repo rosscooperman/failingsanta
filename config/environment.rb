@@ -14,7 +14,6 @@ Rails::Initializer.run do |config|
   config.time_zone = 'Eastern Time (US & Canada)'
   config.action_mailer.default_content_type = 'text/html'
   config.action_view.sanitized_allowed_attributes = 'style'
-  # config.action_view.sanitized_allowed_tags = 'img'
   config.action_mailer.default_url_options = { :host => "www.failingsanta.com" }
 end
 

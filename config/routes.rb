@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
     wishlist.resources :items, :only => [:new, :create, :edit, :update, :destroy],
                                :member => { :buy => :put, :return => :put }
   end
+  map.resources :mailboxes, :only => [ :show, :index ]
   map.resources :messages, :member => { :reply => :get }
   map.resources :feedback, :only => [ :index, :new, :create ]
 

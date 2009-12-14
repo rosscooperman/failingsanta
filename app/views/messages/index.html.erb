@@ -17,8 +17,8 @@
 <% @messages.each do |m| %>
   <tr>
     <td><%=h m.sender.name %></td>
-    <td><%= truncate h(m.recipients), 25 %></td>
-    <td><%= link_to truncate(h(m.subject), 25), m %></td>
+    <td><%= truncate h(m.recipients), :length => 25 %></td>
+    <td><%= link_to truncate(h(m.subject), :length => 25), m %></td>
     <td><%= m.created_at.to_s(:withtime) %></td>
   </tr>
 <% end %>
