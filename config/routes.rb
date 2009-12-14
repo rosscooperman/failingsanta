@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   # resource routing
-  map.resource  :auth, :controller => :auth, :only => [:new, :create, :edit, :update, :destroy],
+  map.resource  :auth, :controller => :auth, :except => [:index, :show],
                                              :member => { :reset => :get, :doreset => :put }
   map.resources :users do |users|
     users.resources :recommendations, :only => [ :new, :create ]
@@ -9,11 +9,11 @@ ActionController::Routing::Routes.draw do |map|
                                   :member => { :buy => :put, :return => :put }
 
   map.resources :wishlists, :only => [:index, :show] do |wishlist|
-    wishlist.resources :items, :only => [:new, :create, :edit, :update, :destroy],
+    wishlist.resources :items, :except => [:show, :index],
                                :member => { :buy => :put, :return => :put }
   end
-  map.resources :mailboxes, :only => [ :show, :index ]
-  map.resources :messages, :member => { :reply => :get }
+  map.resources :mailboxes, :only => [ :show ]
+  map.resources :messages, :except => [:index], :member => { :reply => :get }
   map.resources :feedback, :only => [ :index, :new, :create ]
 
   # root, named, etc. routes

@@ -1,17 +1,9 @@
 class MessagesController < ApplicationController
   before_filter :require_user
 
-  def index
-    if params[:sent]
-      @messages = current_user.sent_messages
-    else
-      @messages = current_user.messages
-    end
-  end
-
   def show
-    @message = Message.find(params[:id], :joins => [:sender, :recipients])
-    unless @message.sender == current_user || @message.recipients.include?(current_user)
+    @message = Message.find(params[:id], :joins => [:sender])
+    unless @message.mailbox.user == current_user
       flash[:error] = 'You can only view messages that were sent to you!'
       redirect_to messages_path
     end
@@ -19,31 +11,44 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-    @recipients = User.find(:all, :conditions => "id <> #{current_user.id}")
   end
 
   def reply
-    original = Message.find(params[:id], :joins => [:sender, :recipients])
+    # set up the new message with correct subject/body
+    original = Message.find(params[:id], :joins => [:sender])
     subject = ((original.subject.match /^\s*re\:?\s*/i) ? '' : 'Re: ') + original.subject
     @message = Message.new(:subject => subject, :body => original.format_reply)
-    @message.recipients << original.sender
-    if params[:all]
-      original.recipients.each { |r| @message.recipients << r unless r == current_user }
-    end
-    @recipients = User.find(:all, :conditions => "id <> #{current_user.id}")
+
+    # build the "automatic" recipients array
+    @recipients  = [original.sender]
+    @recipients += User.find_all_by_login(original.to.split(',')) if params[:all]
+    @recipients.delete(current_user)
+    @recipients.uniq!
+
+    # render!
     render :action => 'new'
   end
 
   def create
     @message = Message.new(params[:message])
     @message.sender = current_user
-    if @message.save
-      @message.recipients.each { |r| Notifier.deliver_message(r) }
-      flash[:notice] = 'Message successfully sent'
-      redirect_to messages_path
+    @message.mailbox = current_user.sent
+
+    if params[:recipient_ids]
+      recipients = User.find(params[:recipient_ids])
+      @message.to = recipients.map{ |r| r.login }.join(',')
+      if @message.save
+        recipients.each do |r|
+          r.inbox.messages << @message.clone
+          Notifier.deliver_message(r)
+        end
+        flash[:notice] = 'Message successfully sent'
+        redirect_to mailbox_path(current_user.inbox) and return
+      end
     else
-      render :action => 'new'
+      @message.errors.add_to_base 'You must select at least one recipient'
     end
+    render :action => 'new'
   end
 
   def destroy

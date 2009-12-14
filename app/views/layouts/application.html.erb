@@ -37,7 +37,9 @@
   <div id="header">
     <ul id="menu" class="left">
       <%= menu_item 'home', :root %>
-      <%= menu_item 'messages', messages_path %>
+      <% if current_user %>
+        <%= menu_item 'messages', mailbox_path(current_user.inbox) %>
+      <% end %>
       <% if current_user && current_user.admin? %>
         <%= menu_item 'manage users', users_path %>
         <%= menu_item "feedback (#{Feedback.all.count})", feedback_index_path %>

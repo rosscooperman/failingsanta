@@ -5,10 +5,11 @@
 
 <h1>Compose Message</h1>
 <% form_for @message do |f| %>
+  <%= error_messages_for :message %>
   <p>
     <%= f.label :recipient_ids, 'To' %>
-    <% @recipients.each do |r| %>
-      <%= check_box_tag "message[recipient_ids][]", r.id, @message.recipients.include?(r) %>
+    <% User.find(:all, :conditions => "id <> #{current_user.id}").each do |r| %>
+      <%= check_box_tag "recipient_ids[]", r.id, @recipients && @recipients.include?(r) %>
       <%= r.name %>
     <% end %>
   </p>
