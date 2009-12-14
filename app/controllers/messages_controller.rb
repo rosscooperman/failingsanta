@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id], :joins => [:sender])
     unless @message.mailbox.user == current_user
       flash[:error] = 'You can only view messages that were sent to you!'
-      redirect_to messages_path
+      redirect_to mailbox_path(current_user.inbox)
     end
   end
 
@@ -52,10 +52,13 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    if Message.find(params[:id]).destroy
+    message = Message.find(params[:id], :joins => [:mailbox])
+    if message.mailbox.user != current_user
+      flash[:error] = 'You can only delete messages that were sent to you!'
+    elsif message.destroy
       flash[:notice] = 'Message deleted successfully'
     else
-      flash[:error] = 'You can only delete messages that were sent to you!'
+      flash[:error] = 'Unable to delete selected message'
     end
     redirect_to mailbox_path(current_user.inbox)
   end
