@@ -19,6 +19,20 @@ $(function() {
                                        "numlist,bullist,|," +
                                        "emotions",
     theme_advanced_container_controls_align: "left",
-    theme_advanced_container_editor: "mceEditor",
+    theme_advanced_container_editor: "mceEditor"
   });
+
+  $('#messages li a').each(function() {
+    var link = $(this).attr('href');
+    var li = $(this).parents('li');
+    var content = $(this).html();
+    $(this).replaceWith(content);
+    li.css('cursor', 'pointer');
+    li.click(function(e) { document.location = link });
+  });
+
+  $('#messages li').hover(
+    function() { $(this).addClass('hover'); },
+    function() { $(this).removeClass('hover'); }
+  );
 });

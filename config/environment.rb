@@ -9,6 +9,7 @@ Rails::Initializer.run do |config|
   config.gem 'authlogic',    :version => '>=2.1'
   config.gem "newrelic_rpm", :version => '>=2.9'
   config.gem 'exceptional',  :version => '>=2.0'
+  config.gem 'sanitize',     :version => '>=1.1'
 
   # Other settings
   config.time_zone = 'Eastern Time (US & Canada)'

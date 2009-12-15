@@ -1,37 +1,120 @@
-#message_body {
-  width: 98%;
-  height: 15em;
-  font-family: monospace;
+#container {
+	overflow: hidden;
+	padding-left: 10em;
 }
 
-.container {
+/* so IE plays nice */
+* html #container {
+	height: 1%;
+}
+
+#sidebar {
+	background-color: white;
+	width: 10em;
+	margin-left: -10em;
+	float: left;
+	display: inline; /* so IE plays nice */
+}
+
+#messagepane {
+	background-color: #444;
+  width: 100%;
+  min-height: 10em;
+	margin-left: -10em;
+	float: right;
+}
+
+* html #messagpane {
+	height: 10em;
+}
+
+#mailboxes, #controls {
+  list-style: none;
   margin: 0;
+  padding: 0;
 }
 
 #controls {
+  margin-bottom: 1em;
+}
+
+#mailboxes li, #controls li {
+  padding: 0.25em 0.25em 0.25em 2em;
+}
+
+#controls li a {
   font-size: 1.4em;
 }
 
-table#messages {
-  margin: 20px 0 0 0;
-  border-spacing: 0;
-  border-collapse: collapse;
-  width: 100%;
+#mailboxes li.current {
+  background-color: #444;
 }
 
-table#messages th, table#messages td {
+#mailboxes li.current a, #mailboxes li a:hover {
+  background-color: #444;
+  color: white;
+}
+
+#mailboxes li a {
+  color: #444;
+}
+
+#messages {
+  min-height: 9.99em;
+  background-color: white;
+  margin: 0.29em 0.3em;
+  font-size: 0.95em;
+  border-top: 1px solid #444;
+  padding: 0;
+  text-align: center;
+}
+
+* html #messages {
+	height: 9.99em;
+}
+
+#messages ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#messages li {
   text-align: left;
-  padding: 5px 15px;
-}
-
-table#messages th {
-  background-color: #f3dae9;
-  border: 1px solid #ee2c9f;
-  border-width: 1px 0;
-}
-
-table#messages td {
+  position: relative;
+  background-color: #eee;
   border-bottom: 1px solid #444;
+  margin: 0;
+  padding: 0.25em 1em;
+}
+
+#messages li.hover {
+  background-color: #ddd;
+}
+
+#messages li div {
+  white-space: nowrap;
+  float: left;
+  overflow: hidden;
+}
+
+#messages .address {
+  width: 15em;
+}
+
+#messages .date {
+  float: none;
+  text-align: right;
+}
+
+#messages li .subtext {
+  font-weight: normal;
+  color: #999;
+}
+
+#messages li a .subtext {
+  font-weight: normal;
+  color: #ff93d3;
 }
 
 ul#headers {
@@ -44,6 +127,7 @@ ul#headers {
 }
 
 ul#headers li {
+  width: 100%;
   margin: 5px 0;
 }
 
@@ -82,4 +166,10 @@ ul#headers .header {
 #options {
   border-top: 1px solid #ee2c9f;
   padding-top: 10px;
+}
+
+#message_body {
+  width: 98%;
+  height: 15em;
+  font-family: monospace;
 }
