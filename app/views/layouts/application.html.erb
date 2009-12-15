@@ -38,7 +38,9 @@
     <ul id="menu" class="left">
       <%= menu_item 'home', :root %>
       <% if current_user %>
-        <%= menu_item 'messages', mailbox_path(current_user.inbox) %>
+        <% unread_count = current_user.inbox.messages.find_all_by_new(true).count %>
+        <% message_menu_text = 'messages' + ((unread_count > 0) ? " (#{unread_count})" : '') %>
+        <%= menu_item message_menu_text, mailbox_path(current_user.inbox) %>
       <% end %>
       <% if current_user && current_user.admin? %>
         <%= menu_item 'manage users', users_path %>
