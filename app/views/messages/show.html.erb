@@ -2,7 +2,7 @@
   <%= stylesheet_link_tag 'message' %>
 <% end %>
 
-<%= link_to '< back', :back %>
+<%= link_to '< back', mailbox_path(@message.mailbox) %>
 
 <ul id="headers">
   <li>

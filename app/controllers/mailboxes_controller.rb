@@ -7,5 +7,6 @@ class MailboxesController < ApplicationController
       flash[:error] = 'You can only view your own mailboxes'
       redirect_to :root
     end
+    render :partial => 'messages' if request.xhr?
   end
 end

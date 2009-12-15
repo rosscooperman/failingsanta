@@ -1,3 +1,19 @@
+function fixMessageLinks() {
+  $('#messages li a').each(function() {
+    var link = $(this).attr('href');
+    var li = $(this).parents('li');
+    var content = $(this).html();
+    $(this).replaceWith(content);
+    li.css('cursor', 'pointer');
+    li.click(function(e) { document.location = link });
+  });
+
+  $('#messages li').hover(
+    function() { $(this).addClass('hover'); },
+    function() { $(this).removeClass('hover'); }
+  );
+}
+
 $(function() {
   var baseUrl = $('script[src*=application.js]').attr('src');
   baseUrl = baseUrl.replace(/javascripts\/application\.js(\?\d+)?$/, '');
@@ -22,17 +38,23 @@ $(function() {
     theme_advanced_container_editor: "mceEditor"
   });
 
-  $('#messages li a').each(function() {
-    var link = $(this).attr('href');
-    var li = $(this).parents('li');
-    var content = $(this).html();
-    $(this).replaceWith(content);
-    li.css('cursor', 'pointer');
-    li.click(function(e) { document.location = link });
-  });
+  fixMessageLinks();
 
-  $('#messages li').hover(
-    function() { $(this).addClass('hover'); },
-    function() { $(this).removeClass('hover'); }
-  );
+  $('#mailboxes li a').click(function(e) {
+    $('#mailboxes li').removeClass('current');
+    var url = $(this).attr('href');
+    $('#messages ul').slideUp(300, function() {
+      $('#loading').show();
+      $.get(url, function(mailbox) {
+        $('#loading').hide();
+        $('#messages ul').html(mailbox);
+        fixMessageLinks();
+        $('#messages ul').slideDown(300);
+      });
+    });
+    $(this).parents('li').addClass('current');
+
+    e.stopPropagation();
+    return false;
+  });
 });
