@@ -92,6 +92,11 @@
   background-color: #ddd;
 }
 
+#messages li.new {
+  background-color: white;
+  font-weight: bold;
+}
+
 #messages li div {
   white-space: nowrap;
   float: left;

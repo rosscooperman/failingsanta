@@ -2,11 +2,12 @@ class MessagesController < ApplicationController
   before_filter :require_user
 
   def show
-    @message = Message.find(params[:id], :joins => [:sender])
+    @message = Message.find(params[:id])
     unless @message.mailbox.user == current_user
       flash[:error] = 'You can only view messages that were sent to you!'
       redirect_to mailbox_path(current_user.inbox)
     end
+    @message.update_attribute(:new, false)
   end
 
   def new
@@ -39,7 +40,9 @@ class MessagesController < ApplicationController
       @message.to = recipients.map{ |r| r.login }.join(',')
       if @message.save
         recipients.each do |r|
-          r.inbox.messages << @message.clone
+          newmsg = @message.clone
+          newmsg.new = true
+          r.inbox.messages << newmsg
           Notifier.deliver_message(r)
         end
         flash[:notice] = 'Message successfully sent'

@@ -23,7 +23,7 @@
       <% end %>
       <ul>
         <% @mailbox.messages.each do |m| %>
-          <li>
+          <li class="<%= (m.new?) ? 'new' : '' %>">
             <div class="address">
               <% if current_user == m.sender %>
                 <%= truncate h(m.recipient_names), :length => 25 %>
@@ -40,47 +40,3 @@
   </div>
 </div>
 
-<!-- <div id="canvas">
-  <div id="colwrap">
-    <div id="mailboxwrap">
-      <div id="mailbox">
-        <table id="messages">
-          <% @mailbox.messages.each do |m| %>
-            <tr>
-              <td class="address">
-                <% if current_user == m.sender %>
-                  <%= truncate h(m.recipient_names), :length => 25 %>
-                <% else %>
-                  <%= m.sender.name %>
-                <% end %>
-              </td>
-              <td class="summary"><%= link_to m.summary(60), m %></td>
-              <td class="date"><%= m.index_date %></td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    </div>
-    <div id="controls">
-      <ul id="mailboxes">
-        <li style="control"><%= link_to 'compose', new_message_path %></li>
-        <% current_user.mailboxes.each do |mailbox| %>
-          <li style="<%= (@mailbox == mailbox) ? 'current' : '' %>">
-            <%= link_to mailbox.name, mailbox_path(mailbox) %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div> -->
-
-<!-- <div id="canvas">
-  <ul id="mailboxes">
-    <li style="control"><%= link_to 'compose', new_message_path %></li>
-    <% current_user.mailboxes.each do |mailbox| %>
-      <li style="<%= (@mailbox == mailbox) ? 'current' : '' %>">
-        <%= link_to mailbox.name, mailbox_path(mailbox) %>
-      </li>
-    <% end %>
-  </ul>
-</div> -->
