@@ -1,13 +1,19 @@
-# rails "stuff"
-config/database.yml
-db/schema.rb
-db/*.sqlite3
-db/data.yml
-tmp/*
-log/*
+# Ignore Rails files that don't belong in source control
+/config/database.yml
+/db/data.yml
 
-# IDE "stuff"
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# Ignore TextMate project files
 *.tmproj
 
-# OS "stuff"
+# Ignore files that Mac OS creates
 .DS_Store
