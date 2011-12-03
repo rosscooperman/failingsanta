@@ -1,9 +1,33 @@
-// This is a manifest file that'll be compiled into including all the files listed below.
-// Add new JavaScript/Coffee code in separate files in this directory and they'll automatically
-// be included in the compiled file accessible from http://example.com/assets/application.js
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
-//
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
+// attach hover functionlity to elements that warrant such treatment
+$(function() {
+  $("#menu li").hover(
+    function() { $(this).addClass('hover'); },
+    function() { $(this).removeClass('hover'); }
+  );
+
+  $("#feedback a").hover(
+    function() {
+      var image = $(this).children('img');
+      var src   = image.attr('src').replace(/(.*)\.png/, "$1_over.png");
+      image.attr('src', src);
+    },
+    function() {
+      var image = $(this).children('img');
+      var src   = image.attr('src').replace(/_over/, "");
+      image.attr('src', src);
+    }
+  );
+});
+
+function ajaxCancel() {
+  $('a.cancel').bind('click', function(e) {
+    e.preventDefault();
+    $.fn.colorbox.close();
+  });
+}
+
+// ajaxify forms with the 'ajaxify' class
+$(function() {
+  $('a.ajaxify').colorbox({ width: '75%', onComplete: ajaxCancel });
+});
+
