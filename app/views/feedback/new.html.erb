@@ -3,7 +3,7 @@
 <% end %>
 
 <h1>Comment</h1>
-<% form_for @feedback, :url => feedback_index_path do |f| %>
+<%= form_for @feedback, :url => feedback_index_path do |f| %>
   <p>
     <%= f.text_area :comment %>
   </p>

@@ -7,6 +7,10 @@ module ApplicationHelper
   end
 
   def menu_item(name, path)
-    "<li>#{link_to(name, path)}</li>"
+    content_tag :li, link_to(name, path)
+  end
+
+  def errors_on(obj)
+    render(partial: 'layouts/errors', object: obj, as: :obj) unless obj.errors.empty?
   end
 end

@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: recommendations
+#
+#  id          :integer         not null, primary key
+#  by_id       :integer
+#  for_id      :integer
+#  buyer_id    :integer
+#  name        :string(255)
+#  description :text
+#  url         :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Recommendation < ActiveRecord::Base
   belongs_to :by, :class_name => 'User'
   belongs_to :for, :class_name => 'User'

@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'User created successfully'
       redirect_to @user
       @user.reset_perishable_token!
-      Notifier.deliver_signup(@user)
+      AuthMailer.signup(@user).deliver
     else
       render :action => 'new'
     end

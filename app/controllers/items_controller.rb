@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
 
   def destroy
     if item = Item.find(params[:id]).destroy
-      Notifier.deliver_item_removed(item.buyer, item) if item.buyer
+      ItemMailer.item_removed(item.buyer, item).deliver if item.buyer
       flash[:notice] = 'Item deleted successfully'
     else
       flash[:error] = 'Item could not be deleted'

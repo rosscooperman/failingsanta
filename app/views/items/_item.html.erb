@@ -6,8 +6,8 @@
   end
 %>
 
-<% form_for [@item.wishlist, @item], :html => { :class => 'five' } do |f| %>
-  <%= error_messages_for :item %>
+<%= form_for [@item.wishlist, @item], :html => { :class => 'five' } do |f| %>
+  <%= errors_on @item %>
   <h1><%= type %> Item</h1>
   <p>
     <%= f.label :name, 'Short Description' %>
@@ -22,7 +22,7 @@
     <%= f.text_area :description, :size => '40x5' %>
   </p>
   <p>
-    <%= f.submit "#{type} Item" %>
+    <%= f.submit %>
     <%= link_to 'cancel', :back, :confirm => 'Are you sure?', :class => 'cancel' %>
   </p>
 <% end %>

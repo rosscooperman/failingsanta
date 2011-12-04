@@ -43,7 +43,7 @@ class MessagesController < ApplicationController
           newmsg = @message.clone
           newmsg.new = true
           r.inbox.messages << newmsg
-          Notifier.deliver_message(r)
+          MessageMailer.message(r).deliver
         end
         flash[:notice] = 'Message successfully sent'
         redirect_to mailbox_path(current_user.inbox) and return

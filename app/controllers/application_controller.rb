@@ -9,9 +9,6 @@ class ApplicationController < ActionController::Base
   helper :all
   helper_method :current_user_session, :current_user
 
-  # make sure passwords don't show up in the logs
-  filter_parameter_logging :password, :password_confirmation
-
   private
 
   # fetch, or create the current user session
@@ -48,7 +45,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location(type = :current)
-    session[:return_to] = (type == :referrer) ? request.referrer : request.request_uri
+    session[:return_to] = (type == :referrer) ? request.referrer : request.url
   end
 
   def location_stored?

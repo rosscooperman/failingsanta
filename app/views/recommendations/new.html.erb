@@ -1,6 +1,6 @@
-<%= error_messages_for :recommendation %>
+<%= errors_on @recommendation %>
 
-<% form_for [@recommendation.for, @recommendation], :html => { :class => 'five' } do |f| %>
+<%= form_for [@recommendation.for, @recommendation], :html => { :class => 'five' } do |f| %>
   <h1>Create Recommendation</h1>
   <%= render :partial => 'recommendation', :locals => { :f => f } %>
   <p>

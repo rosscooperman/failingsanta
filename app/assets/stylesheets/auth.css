@@ -1,3 +1,9 @@
+/*
+ *= require main
+ *= require form
+ *= require_self
+ */
+
 body {
   margin: 100px auto 0 auto;
   width: 350px;
@@ -21,7 +27,7 @@ input {
   font-size: 1.1em;
 }
 
-#session_login, #session_password, #user_password, #user_password_confirmation {
+#user_session_login, #user_session_password, #user_password, #user_password_confirmation {
   width: 250px;
 }
 

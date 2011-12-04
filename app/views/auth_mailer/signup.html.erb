@@ -1,4 +1,4 @@
-<%=h @user.name%>,<br />
+<%= @user.name %>,<br />
 <br />
 A new account has been created for you.  Visit
 <%= link_to edit_auth_url(:token => @user.perishable_token),

@@ -1,12 +1,12 @@
-<%=h @user.name%>,<br />
+<%= @user.name %>,<br />
 <br />
 Sorry to be the bearer of bad news but an item you marked as "bought" on failingsanta.com has
 been deleted. Below are the details in case you want to return the item or at least avoid
 wrapping it:<br />
 <br />
-Short Description: <%=h @item.name %><br />
-Long Description: <%=h @item.description %><br />
-URL: <%= link_to h(@item.url), h(@item.url) %><br />
+Short Description: <%= @item.name %><br />
+Long Description: <%= @item.description %><br />
+URL: <%= link_to @item.url, @item.url %><br />
 <br />
 Ho! Ho! Ho?,<br />
 Failing Santa

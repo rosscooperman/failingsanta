@@ -4,8 +4,8 @@
 <% end %>
 
 <h1>Compose Message</h1>
-<% form_for @message do |f| %>
-  <%= error_messages_for :message %>
+<%= form_for @message do |f| %>
+  <%= errors_on @message %>
   <p>
     <%= f.label :recipient_ids, 'To' %>
     <% User.find(:all, :conditions => "id <> #{current_user.id}").each do |r| %>

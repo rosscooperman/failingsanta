@@ -7,11 +7,11 @@
 
 <head>
   <title><%= h(yield(:title) || "Failing Santa") %></title>
-  <%= stylesheet_link_tag 'main', 'form', 'auth' %>
+  <%= stylesheet_link_tag 'auth' %>
   <%= yield :head %>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-  <% if RAILS_ENV == 'production' -%>
+  <% if Rails.env.production? %>
     <script type="text/javascript">
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
     document.write(unescape("%3Cscript src='" + gaJsHost +

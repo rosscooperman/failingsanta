@@ -3,9 +3,10 @@ class WishlistsController < ApplicationController
 
   def index
     @wishlist = current_user.wishlists.first
-    @users = User.find(:all, :conditions => "users.id <> #{current_user.id}",
-                       :joins => [:wishlists], :order => 'name ASC')
-    @user = (params[:id]) ? User.find(params[:id]) : @users.first
+    @wishlist = current_user.wishlists.create(name: 'Default Wishlist', item_count: 0) if @wishlist.nil?
+
+    @users = User.where("users.id <> ?", current_user.id).joins(:wishlists).order('name ASC')
+    @user  = (params[:id]) ? User.first(params[:id]) : @users.first
   end
 
   def show

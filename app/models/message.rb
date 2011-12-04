@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id         :integer         not null, primary key
+#  sender_id  :integer
+#  subject    :string(255)
+#  body       :text
+#  created_at :datetime
+#  updated_at :datetime
+#  to         :string(255)
+#  mailbox_id :integer
+#  new        :boolean         default(FALSE)
+#
+
 class Message < ActiveRecord::Base
   include ActionView::Helpers::SanitizeHelper
 

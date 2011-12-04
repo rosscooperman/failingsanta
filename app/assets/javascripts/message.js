@@ -15,7 +15,7 @@ function fixMessageLinks() {
 }
 
 $(function() {
-  var baseUrl = $('script[src*=application.js]').attr('src');
+  var baseUrl = $("script[src*='application.js']").attr('src');
   baseUrl = baseUrl.replace(/javascripts\/application\.js(\?\d+)?$/, '');
   $('textarea').tinymce({
     extended_valid_elements: "img[src|alt|mce_src|title|border]",
@@ -23,7 +23,7 @@ $(function() {
     relative_urls: false,
     theme: "advanced",
     plugins: "safari,emotions",
-    content_css: $('link[href*=tinymce\.css]').attr('href'),
+    content_css: $("link[href*='tinymce.css']").attr('href'),
 
     theme_advanced_toolbar_location: "top",
     theme_advanced_toolbar_align:    "left",

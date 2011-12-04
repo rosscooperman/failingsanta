@@ -1,4 +1,4 @@
-<%= error_messages_for :user %>
+<%= errors_on @user %>
 
 <%
   if controller.action_name == 'new' || controller.action_name == 'create'
@@ -8,7 +8,7 @@
   end
 %>
 
-<% form_for @user, :html => { :class => 'four' } do |f| %>
+<%= form_for @user, :html => { :class => 'four' } do |f| %>
   <h1><%= type %> User</h1>
   <p>
     <%= f.label :name %>

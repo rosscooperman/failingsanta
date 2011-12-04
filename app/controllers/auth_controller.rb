@@ -6,7 +6,7 @@ class AuthController < ApplicationController
   end
 
   def create
-    @session = UserSession.new(params[:session])
+    @session = UserSession.new(params[:user_session])
     if @session.save
       flash[:notice] = 'Login successful!'
       redirect_back_or_default :root
@@ -52,7 +52,7 @@ class AuthController < ApplicationController
     user = User.find_by_email(params[:user][:email])
     if user
       user.reset_perishable_token!
-      Notifier.deliver_password_reset(user)
+      AuthMailer.password_reset(user).deliver
       flash[:notice] = 'Username and password sent!'
       redirect_to :login
     else

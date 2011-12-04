@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: items
+#
+#  id          :integer         not null, primary key
+#  wishlist_id :integer
+#  name        :string(255)
+#  description :text(255)
+#  url         :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  buyer_id    :integer
+#
+
 class Item < ActiveRecord::Base
   belongs_to :wishlist, :counter_cache => true
   belongs_to :buyer, :class_name => 'User'

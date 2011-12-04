@@ -16,7 +16,7 @@
 }
 
 #bgimage {
-	width: 220px;	
+	width: 220px;
 }
 
 #fontface {
@@ -63,24 +63,24 @@
 }
 
 .addbutton {
-	background-image: url('../images/add.gif');
+	background-image: url('add.gif');
 	float: left;
 	margin-right: 3px;
 }
 
 .removebutton {
-	background-image: url('../images/remove.gif');
+	background-image: url('remove.gif');
 	float: left;
 }
 
 .moveupbutton {
-	background-image: url('../images/move_up.gif');
+	background-image: url('move_up.gif');
 	float: left;
 	margin-right: 3px;
 }
 
 .movedownbutton {
-	background-image: url('../images/move_down.gif');
+	background-image: url('move_down.gif');
 	float: left;
 }
 
