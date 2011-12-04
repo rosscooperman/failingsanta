@@ -1,18 +1,19 @@
-      <% if @mailbox.messages.count <= 0 %>
-        <br />There are no messages in this mailbox.
-      <% end %>
-      <ul>
-        <% @mailbox.messages.each do |m| %>
-          <li class="<%= (m.new?) ? 'new' : '' %>">
-            <div class="address">
-              <% if current_user == m.sender %>
-                <%= truncate h(m.recipient_names), :length => 25 %>
-              <% else %>
-                <%= m.sender.name %>
-              <% end %>
-            </div>
-            <div class="summary"><%= link_to m.summary(60), m %></div>
-            <div class="date"><%= m.index_date %></div>
-          </li>
-        <% end %>
-      </ul>
+<ul>
+  <% if @mailbox.messages.count <= 0 %>
+    <li class="nomessage">There are no messages in this mailbox.</li>
+  <% else %>
+    <% @mailbox.messages.each do |m| %>
+      <li class="<%= (m.new?) ? 'new' : '' %>">
+        <div class="address">
+          <% if current_user == m.sender %>
+            <%= truncate h(m.recipient_names), :length => 25 %>
+          <% else %>
+            <%= m.sender.name %>
+          <% end %>
+        </div>
+        <div class="summary"><%= link_to m.summary(60), m %></div>
+        <div class="date"><%= m.index_date %></div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

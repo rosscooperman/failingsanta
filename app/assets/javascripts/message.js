@@ -8,7 +8,7 @@ function fixMessageLinks() {
     li.click(function(e) { document.location = link });
   });
 
-  $('#messages li').hover(
+  $('#messages li:not([class~=nomessage])').hover(
     function() { $(this).addClass('hover'); },
     function() { $(this).removeClass('hover'); }
   );

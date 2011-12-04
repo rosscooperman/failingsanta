@@ -43,11 +43,17 @@ Failingsanta::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w( auth.css message.js )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => "www.failingsanta.com" }
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.sendmail_settings = {
+    :arguments => '-i -t -f system@failingsanta.com',
+    :location => '/usr/sbin/sendmail'
+  }
+
 
   # Enable threaded mode
   # config.threadsafe!

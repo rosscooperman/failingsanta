@@ -2,3 +2,8 @@ textarea {
   width: 98%;
   height: 10em;
 }
+
+#feedback a:hover {
+  color: white;
+  background-color: transparent;
+}

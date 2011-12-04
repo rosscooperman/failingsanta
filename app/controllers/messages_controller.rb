@@ -49,9 +49,9 @@ class MessagesController < ApplicationController
         redirect_to mailbox_path(current_user.inbox) and return
       end
     else
-      @message.errors.add_to_base 'You must select at least one recipient'
+      @message.errors.add(:base, 'You must select at least one recipient')
     end
-    render :action => 'new'
+    render :new
   end
 
   def destroy

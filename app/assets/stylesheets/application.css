@@ -1,9 +1,11 @@
 /*
  *= require colorbox-rails
- *= require libs/colorbox
  *= require libs/tinymce
  *= require main
  *= require form
+ *= require list
+ *= require wishlist
+ *= require message
  *= require jselect
  *= require feedback
  *= require_self

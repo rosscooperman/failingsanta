@@ -88,6 +88,13 @@
   padding: 0.25em 1em;
 }
 
+#messages li.nomessage {
+  text-align: center;
+  background-color: transparent;
+  border-bottom: 0 none;
+  margin-top: 1em;
+}
+
 #messages li.hover {
   background-color: #ddd;
 }
