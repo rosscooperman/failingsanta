@@ -1,6 +1,6 @@
 set :application, "failingsanta"
 set :repository,  "git@github.fs:rosscooperman/failingsanta.git"
-set :deploy_to,   "/var/www/apps/#{application}"
+set :deploy_to,   "/var/apps/#{application}"
 
 set :scm,           :git
 set :deploy_via,    :remote_cache
@@ -10,9 +10,9 @@ set :keep_releases, 10
 set :use_sudo,      false
 set :user,          "deploy"
 
-server "www03.rosscooperman.com", :app, :web, :db, :primary => true
+server "failingsanta.com", :app, :web, :db, :primary => true
 
-desc "Link in the production database.yml and run 'rake gems:refresh_specs'"
+desc "Link in the production database.yml"
 task :after_update_code do
   run "ln -nfs #{deploy_to}/#{shared_dir}/config/database.yml #{release_path}/config/database.yml"
 end

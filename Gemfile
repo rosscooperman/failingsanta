@@ -8,6 +8,7 @@ gem "authlogic"
 gem "newrelic_rpm"
 gem "exceptional"
 gem "sanitize"
+gem "capistrano"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,4 +25,8 @@ end
 group :development do
   gem "letter_opener"
   gem "annotate", "2.4.1.beta1"
+end
+
+group :production do
+  gem "therubyracer"
 end
