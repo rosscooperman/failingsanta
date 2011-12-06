@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+
 set :application, "failingsanta"
 set :repository,  "git@github.com:rosscooperman/failingsanta.git"
 set :deploy_to,   "/var/apps/#{application}"
@@ -23,7 +25,7 @@ namespace :deploy do
   end
 end
 
-after :update_code do
+after 'deploy:finalize_update' do
   run "ln -nfs #{deploy_to}/#{shared_dir}/config/database.yml #{release_path}/config/database.yml"
 end
 after :deploy, "deploy:cleanup"

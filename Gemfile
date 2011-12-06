@@ -1,7 +1,6 @@
 source "http://rubygems.org"
 
 gem "rails", "3.1.3"
-gem "sqlite3"
 gem "jquery-rails"
 gem "colorbox-rails"
 gem "authlogic"
@@ -27,6 +26,11 @@ group :development do
   gem "annotate", "2.4.1.beta1"
 end
 
+group :development, :test do
+  gem "sqlite3"
+end
+
 group :production do
+  gem "mysql2"
   gem "therubyracer"
 end
