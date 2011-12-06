@@ -4,6 +4,6 @@ class ItemMailer < ActionMailer::Base
   def item_removed(user, item)
     @user = user
     @item = item
-    mail subject: 'An item you purchased on failingsanta.com has been removed', to: user.email, sent_on: Time.now
+    mail subject: 'An item you purchased on failingsanta.com has been removed', to: user.email
   end
 end

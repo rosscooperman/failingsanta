@@ -42,8 +42,8 @@ class MessagesController < ApplicationController
         recipients.each do |r|
           newmsg = @message.clone
           newmsg.new = true
-          r.inbox.messages << newmsg
-          MessageMailer.message(r).deliver
+          newmsg.update_attributes(:mailbox => r.inbox)
+          MessageMailer.send_message(r).deliver
         end
         flash[:notice] = 'Message successfully sent'
         redirect_to mailbox_path(current_user.inbox) and return

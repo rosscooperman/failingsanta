@@ -47,6 +47,6 @@ class Message < ActiveRecord::Base
     body_clean = Sanitize.clean(body)
     body_count = limit - subject.size - 3
     body_snippet = (body_clean.size < body_count) ? body_clean : body_clean[0...body_count] + '...'
-    "#{subject} <span class=\"subtext\">&ndash; #{body_snippet}</span>"
+    "#{subject} <span class=\"subtext\">&ndash; #{body_snippet}</span>".html_safe
   end
 end

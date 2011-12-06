@@ -17,7 +17,7 @@ function fixMessageLinks() {
 $(function() {
   var baseUrl = $("script[src*='application.js']").attr('src');
   baseUrl = baseUrl.replace(/javascripts\/application\.js(\?\d+)?$/, '');
-  $('textarea').tinymce({
+  $('#message_body').tinymce({
     extended_valid_elements: "img[src|alt|mce_src|title|border]",
     document_base_url: baseUrl,
     relative_urls: false,
