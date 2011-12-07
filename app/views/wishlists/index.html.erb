@@ -74,7 +74,7 @@
 
 <div class="right">
   <div class="heading">
-    <% form_tag wishlists_path, :method => :get, :class => 'selector' do %>
+    <%= form_tag wishlists_path, :method => :get, :class => 'selector' do %>
       <%= submit_tag 'change' %>
       <%= select_tag :id, user_options(@users) %>
     <% end %>
