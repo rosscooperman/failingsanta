@@ -1,9 +1,9 @@
 //= require jquery
-//= require colorbox-rails
-//= require libs/jquery.ba-bbq.min
-//= require libs/jquery.timers-1.2
-//= require libs/tinymce/jscripts/tiny_mce/jquery.tinymce
-//= require libs/tinymce/jscripts/tiny_mce/tiny_mce
+//= require jquery.ba-bbq.min
+//= require jquery.timers-1.2
+//= require jquery.colorbox
+//= require tinymce/jscripts/tiny_mce/jquery.tinymce
+//= require tinymce/jscripts/tiny_mce/tiny_mce
 //= require jquery.jselect
 //= require message
 //= require wishlist

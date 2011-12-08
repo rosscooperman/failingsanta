@@ -1,6 +1,6 @@
 /*
- *= require colorbox-rails
- *= require libs/tinymce
+ *= require tinymce
+ *= require colorbox
  *= require main
  *= require form
  *= require list

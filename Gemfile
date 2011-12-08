@@ -2,7 +2,6 @@ source "http://rubygems.org"
 
 gem "rails", "3.1.3"
 gem "jquery-rails"
-gem "colorbox-rails"
 gem "authlogic"
 gem "newrelic_rpm"
 gem "exceptional"
