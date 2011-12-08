@@ -41,6 +41,9 @@ $(function() {
   fixMessageLinks();
 
   $('#mailboxes li a').click(function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
     $('#mailboxes li').removeClass('current');
     var url = $(this).attr('href');
     $('#messages ul').slideUp(300, function() {
@@ -53,8 +56,5 @@ $(function() {
       });
     });
     $(this).parents('li').addClass('current');
-
-    e.stopPropagation();
-    return false;
   });
 });
