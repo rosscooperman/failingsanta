@@ -1,10 +1,11 @@
 //= require jquery
+//= require jquery_ujs
 //= require jquery.ba-bbq.min
 //= require jquery.timers-1.2
 //= require jquery.colorbox
 //= require tinymce/jscripts/tiny_mce/jquery.tinymce
 //= require tinymce/jscripts/tiny_mce/tiny_mce
-// require jquery.jselect
+//= require jquery.jselect
 //= require message
 //= require wishlist
 //= require_self

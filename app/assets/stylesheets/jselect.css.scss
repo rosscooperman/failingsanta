@@ -4,7 +4,7 @@
 }
 
 .jselect .title {
-  background: #eee url(jselect_arrow.png) no-repeat center right;
+  background: #eee image-url(jselect_arrow.png) no-repeat center right;
   border: 1px solid #999;
   vertical-align: middle;
   padding: 0.1em 0.3em 0.05em 0.2em;
@@ -13,7 +13,7 @@
 }
 
 .jselect .title-over {
-  background-image: url(jselect_arrow_over.png);
+  background-image: image-url(jselect_arrow_over.png);
 }
 
 .jselect ul {
