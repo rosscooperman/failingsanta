@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091215023751) do
+ActiveRecord::Schema.define(:version => 20111208040729) do
 
   create_table "feedback", :force => true do |t|
     t.integer  "user_id"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20091215023751) do
     t.integer  "inbox_id"
     t.integer  "sent_id"
     t.integer  "archive_id"
+    t.integer  "giftee_id"
   end
 
   create_table "wishlists", :force => true do |t|

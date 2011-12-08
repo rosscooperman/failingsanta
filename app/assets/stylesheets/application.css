@@ -7,5 +7,6 @@
  *= require message
  *= require jselect
  *= require feedback
+ *= require pairings
  *= require_self
 */

@@ -20,6 +20,7 @@ Failingsanta::Application.routes.draw do
     end
   end
 
+  resources :pairings,  :only => [ :index, :create ]
   resources :mailboxes, :only => [ :show ]
   resources :feedback,  :only => [ :index, :new, :create ]
   resources :messages,  :except => [:index] do

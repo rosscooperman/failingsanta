@@ -1,0 +1,12 @@
+<%= form_tag pairings_path, :method => :post do %>
+  <ul id="pairings">
+    <% @users.each_with_index do |user, i| %>
+      <li>
+        <%= hidden_field_tag "pairings[#{i}][user_id]", user.id %>
+        <em><%= user.name %></em> is paired with
+        <%= select_tag "pairings[#{i}][giftee_id]", pairing_select_options(user.giftee_id), :include_blank => true %>
+      </li>
+    <% end %>
+  </ul>
+  <%= submit_tag 'Save' %>
+<% end %>

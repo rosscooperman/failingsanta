@@ -26,18 +26,19 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :wishlists
-  has_many :bought_items, :class_name => 'Item', :foreign_key => :buyer_id
+  has_many   :wishlists
+  has_many   :bought_items, :class_name => 'Item', :foreign_key => :buyer_id
+  belongs_to :giftee,       :class_name => 'User'
 
-  has_many :mailboxes
-  belongs_to :inbox, :class_name => 'Mailbox'
-  belongs_to :sent, :class_name => 'Mailbox'
+  has_many   :mailboxes
+  belongs_to :inbox,   :class_name => 'Mailbox'
+  belongs_to :sent,    :class_name => 'Mailbox'
   belongs_to :archive, :class_name => 'Mailbox'
 
   has_many :feedback
-  has_many :recommendations, :foreign_key => :by_id
-  has_many :recommendations_for, :class_name => 'Recommendation', :foreign_key => :for_id
-  has_many :recommendations_bought, :class_name => 'Recommendation', :foreign_key => :buyer_id
+  has_many :recommendations,        :foreign_key => :by_id
+  has_many :recommendations_for,    :foreign_key => :for_id,   :class_name => 'Recommendation'
+  has_many :recommendations_bought, :foreign_key => :buyer_id, :class_name => 'Recommendation'
 
   after_create :create_mailboxes
 
