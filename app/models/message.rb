@@ -20,7 +20,7 @@ class Message < ActiveRecord::Base
   belongs_to :mailbox, :counter_cache => true
 
   def recipient_names
-    User.find_all_by_login(to.split(',')).map{ |u| u.name }.join(', ')
+    User.find_all_by_login(to.split(',')).map{ |u| u.name }.join(', ') unless to.blank?
   end
 
   def format_reply

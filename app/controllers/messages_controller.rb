@@ -37,13 +37,16 @@ class MessagesController < ApplicationController
 
     if params[:recipient_ids]
       recipients = User.find(params[:recipient_ids])
-      @message.to = recipients.map{ |r| r.login }.join(',')
+      @message.to = recipients.map(&:login).join(',')
       if @message.save
-        recipients.each do |r|
-          newmsg = @message.clone
-          newmsg.new = true
-          newmsg.update_attributes(:mailbox => r.inbox)
-          MessageMailer.send_message(r).deliver
+        recipients.each do |recipient|
+          message = Message.create(params[:message].merge({
+            :sender  => current_user,
+            :mailbox => recipient.inbox,
+            :new     => true,
+            :to      => @message.to
+          }))
+          MessageMailer.send_message(recipient).deliver if message.save
         end
         flash[:notice] = 'Message successfully sent'
         redirect_to mailbox_path(current_user.inbox) and return
